@@ -4,7 +4,7 @@ export default function Hero() {
   const name = ' Yuli';
 
   return (
-    <div className=" h-[283px] w-full flex items-center px-[120px] justify-between  ">
+    <div className=" h-[283px] w-full flex items-center px-[120px] justify-between pt-10 ">
       <div >
       <small className="text-[22px] text-[#292B2D] font-bold ">Hola {name}✌</small>
       <h1 className=" text-5xl text-[#AA5BFF] font-bold ">¿Qué vas a aprender hoy? </h1> 
