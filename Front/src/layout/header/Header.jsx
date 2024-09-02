@@ -1,7 +1,7 @@
 //import GoogleLoginModal from "./components/GoogleLoginModal";
 import { ChevronDown, Heart } from "lucide-react";
-import logo from "../assets/logo.svg";
-import lupa from "../assets/lupa.svg";
+import logo from "../../assets/logo.svg";
+import lupa from "../../assets/lupa.svg";
 import { useState } from "react";
 import MenuMentoriasModal from "./components/MenuMentorias";
 const Header = () => {
@@ -10,7 +10,7 @@ const Header = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-[80px]">
       <nav className="fixed top-0 left-0 right-0 backdrop-blur-md bg-white/30 shadow-lg">
         <div className="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-2">
           <div className="flex items-center justify-between h-16">

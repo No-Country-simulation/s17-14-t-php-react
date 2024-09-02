@@ -1,11 +1,11 @@
-import newIcon from "../../assets/new.svg";
+import newIcon from "../../../assets/new.svg";
 import { TrendingUp } from "lucide-react";
 
 const MenuMentoriasModal = () => {
   return (
     <>
       <div
-        className={`absolute top-full mt-8 left-0 right-0 bg-white bg-opacity-20 border-2 border-gris backdrop-filter backdrop-blur-lg rounded-lg shadow-lg overflow-hidden transition-all duration-200 ease-in-out`}
+        className={`absolute top-full mt-8 left-0 right-0 bg-white bg-opacity-20 border-2 border-gris backdrop-filter backdrop-blur-lg rounded-lg shadow-lg overflow-hidden transition-all duration-200 ease-in-out z-50`}
       >
         <div className="p-6">
           <div className="mb-6">
