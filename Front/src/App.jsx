@@ -1,21 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Login from './login/Login'
+import Header from "./header/Header";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <Login/>
-      </div>
-      <h1>Mentos</h1>
-     
-    </>
-  )
+    <div>
+      {
+      location.pathname !== "/admin" ? (
+        <Header />
+      ) : (
+        <></>
+      )}
+      <AppRoutes />
+    </div>
+  );
 }
 
-export default App
+export default App;

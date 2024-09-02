@@ -1,16 +1,32 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const colors = require('tailwindcss/colors')
+
+export default {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",  // Escanea todos los archivos en 'src' y subdirectorios
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontWeight: {
+      medium: '600',
+    },
     colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      'white': '#ffffff',
-      'purple': '#AA5BFF',
-      'purple2': '#F317FF',
-    }
+      black: colors.black,
+      white: colors.white,
+      gray: colors.gray,
+      emerald: colors.emerald,
+      indigo: colors.indigo,
+      yellow: colors.yellow,
+      'blanco': '#ffffff',
+      'blancoVioleta': '#FFCAFB',
+      'gris': '#545557',
+      'violeta': '#AA5BFF',
+      'violeta2': '#F317FF',
+    },
+    extend: {
+      fontFamily: {
+      }
+    },
   },
-  plugins: [],
+  plugins: ["prettier-plugin-tailwindcss"],
 };
