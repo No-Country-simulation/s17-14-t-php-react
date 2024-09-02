@@ -60,14 +60,14 @@ const Header = () => {
                 <input
                   type="search"
                   placeholder="Buscar mentoría..."
-                  className="bg-white text-lg font-bold bg-gradient-to-br from-violeta to-violeta2 bg-clip-text text-transparent py-1 px-4 flex-1 outline-none"
+                  className="bg-white text-lg font-medium bg-gradient-to-br from-violeta to-violeta2 bg-clip-text text-transparent py-1 px-4 flex-1 outline-none"
                 />
               </div>
               {isLogin ? (
                 <div className="flex gap-4">
                   <button
                     onClick={() => setIsLogin(!isLogin)}
-                    className="bg-white text-lg font-bold bg-gradient-to-br from-violeta to-violeta2 bg-clip-text text-transparent py-1 px-4 border-2 border-violeta hover:bg-violeta2 rounded-tr-lg rounded-bl-lg whitespace-nowrap"
+                    className="bg-white text-lg  bg-gradient-primary bg-clip-text text-transparent font-semibold py-1 px-4 border-2 border-violeta hover:bg-violeta2 rounded-tr-lg rounded-bl-lg whitespace-nowrap"
                   >
                     Iniciar Sesión
                   </button>
@@ -77,7 +77,7 @@ const Header = () => {
                     showModal={showModal}
                     setShowModal={setShowModal}
                   /> */}
-                  <button className="bg-white text-lg bg-gradient-to-br from-violeta to-violeta2 text-blanco py-1.5 px-4 hover:bg-violeta2 rounded-tr-lg rounded-bl-lg">
+                  <button className="bg-white text-lg bg-gradient-primary text-blanco py-1.5 px-4 hover:bg-violeta2 rounded-tr-lg rounded-bl-lg">
                     Registrarse
                   </button>
                 </div>
