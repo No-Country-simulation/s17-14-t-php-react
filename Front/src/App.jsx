@@ -1,11 +1,18 @@
-import AppRoutes from "./routes/AppRoutes"
+import Header from "./header/Header";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  
-
   return (
-    <AppRoutes />
-  )
+    <div>
+      {
+      location.pathname !== "/admin" ? (
+        <Header />
+      ) : (
+        <></>
+      )}
+      <AppRoutes />
+    </div>
+  );
 }
 
-export default App
+export default App;
