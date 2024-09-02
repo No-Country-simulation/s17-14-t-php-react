@@ -11,12 +11,6 @@ export default {
       medium: '600',
     },
     colors: {
-      black: colors.black,
-      white: colors.white,
-      gray: colors.gray,
-      emerald: colors.emerald,
-      indigo: colors.indigo,
-      yellow: colors.yellow,
       'blanco': '#ffffff',
       'blancoVioleta': '#FFCAFB',
       'gris': '#545557',
