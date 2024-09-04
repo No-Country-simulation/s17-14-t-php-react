@@ -1,14 +1,16 @@
-import Card from '../common/components/CardMentor';
-import Categories from './components/Categories/Categories';
-
+import Categories from "./components/Categories/Categories";
+import Hero from "./components/hero/Hero";
+import Card from "../common/components/CardMentor";
 export default function Home() {
   return (
-    <section className=''>
-      <section className=''>
-        <Card />
+    <section className="">
+      <section className="">
+        <Hero />
       </section>
-      <section className=''>
-        <Categories />
+
+      <Categories />
+      <section className="">
+        <Card />
       </section>
     </section>
   );

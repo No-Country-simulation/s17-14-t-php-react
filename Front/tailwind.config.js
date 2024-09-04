@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require('tailwindcss/colors')
+
 
 export default {
   content: [
@@ -12,10 +12,8 @@ export default {
         'gradient-primary': 'linear-gradient(135.3deg, #AA5BFF 24.87%, #F317FF 132.39%)',
         'gradient-secondary': 'linear-gradient(135.3deg, #FFB35B 24.87%, #F317FF 132.39%)',
       },
-      fontFamily: {
-      },
       colors: {
-        'transparent': 'transparent',
+        'transparent':'transparent',
         'blanco': '#ffffff',
         'blancoVioleta': '#FFCAFB',
         'gris': '#545557',

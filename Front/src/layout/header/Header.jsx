@@ -1,73 +1,77 @@
 //import GoogleLoginModal from "./components/GoogleLoginModal";
-import { ChevronDown, Heart } from "lucide-react";
-import logo from "../assets/logo.svg";
-import lupa from "../assets/lupa.svg";
 import { useState } from "react";
 import MenuMentoriasModal from "./components/MenuMentorias";
+import MenuPerfilModal from "./components/MenuPerfil";
 const Header = () => {
   //const [showModal, setShowModal] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuMentoriasOpen, setIsMenuMentoriasOpen] = useState(false);
+  const [isMenuPerfilOpen, setIsMenuPerfilOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <div className="min-h-[80px]">
-      <nav className="fixed top-0 left-0 right-0 backdrop-blur-md bg-white/30 shadow-lg">
-        <div className="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-2">
+    <div className="min-[80px] ">
+      <nav className="fixed top-0 left-0 right-0 backdrop-blur-md  z-50 ">
+        <div className="max-w-7xl mx-auto py-[18px] px-4 sm:px-6 lg:px-2">
           <div className="flex items-center justify-between h-16">
             <div className="flex ">
               <div className="flex-shrink-0">
                 <img
-                  src={logo}
-                  className="flex items-center py-2"
+                  src="./icons/logo.svg"
+                  className="flex items-center py-2 select-none"
                   alt="mentos logo"
                 />
               </div>
-              <div className="hidden md:block relative">
-                <div className="ml-10 flex items-baseline space-x-4">
+              <div className="hidden md:block relative ">
+                <div className="ml-10 flex items-baseline gap-6">
                   <a
                     href="/"
-                    className="text-gris hover:text-violeta2 px-3 py-3 rounded-md text-lg font-medium"
+                    className="text-gris hover:text-violeta2  py-3 rounded-md text-base font-semibold cursor-pointer select-none"
                   >
                     Inicio
                   </a>
-                  <div className="flex items-center">
-                    <a
-                      className="text-gris hover:text-violeta2 px-3 py-3 rounded-md text-lg font-medium"
-                      onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    >
-                      Mentorías{" "}
+                  <div
+                    className="flex items-center cursor-pointer"
+                    onClick={() => setIsMenuMentoriasOpen(!isMenuMentoriasOpen)}
+                  >
+                    <a className="text-gris hover:text-violeta2 pr-2 py-3 rounded-md text-base font-semibold cursor-pointer select-none ">
+                      Mentorías
                     </a>
-                    <ChevronDown
-                      className={`ml-2 h-4 w-4 transition-transform duration-200 ${
-                        isMenuOpen ? "rotate-180" : ""
+                    <img
+                      src="./icons/triangle.svg"
+                      className={` h-[4,7px] w-[8,6px] transition-transform duration-200 select-none rotate-180${
+                        isMenuMentoriasOpen ? "rotate-180" : ""
                       }`}
                     />
                   </div>
                   <a
                     href="#"
-                    className="text-gris hover:text-violeta2 px-3 py-3 rounded-md text-lg font-medium"
+                    className="text-gris hover:text-violeta2  py-3 rounded-md text-base font-semibold cursor-pointer select-none"
                   >
                     Ayuda
                   </a>
                 </div>
 
-                {isMenuOpen && <MenuMentoriasModal />}
+                {isMenuMentoriasOpen && <MenuMentoriasModal />}
               </div>
             </div>
-            <div className="flex flex-row gap-4 items-right">
-              <div className="flex items-center border-violeta border-2 rounded-lg">
-                <img src={lupa} className="ml-2 h-5 w-6" alt="vector" />
+            <div className="flex flex-row gap-6 h-[42px]  items-right">
+              <div className="flex items-center w-[360px] border-violeta border-2 rounded-lg">
+                <img
+                  src="./icons/lupa.svg"
+                  className="ml-2 size-[18px] select-none"
+                  alt="vector"
+                />
                 <input
                   type="search"
                   placeholder="Buscar mentoría..."
-                  className="bg-white text-lg font-medium bg-gradient-to-br from-violeta to-violeta2 bg-clip-text text-transparent py-1 px-4 flex-1 outline-none"
+                  className="bg-violeta text-sm font-medium  bg-clip-text text-violeta py-1 px-4 flex-1 outline-none "
                 />
               </div>
               {isLogin ? (
-                <div className="flex gap-4">
+                <div className="flex gap-6">
                   <button
                     onClick={() => setIsLogin(!isLogin)}
-                    className="bg-white text-lg  bg-gradient-primary bg-clip-text text-transparent font-semibold py-1 px-4 border-2 border-violeta hover:bg-violeta2 rounded-tr-lg rounded-bl-lg whitespace-nowrap"
+                    className="bg-white text-sm font-semibold  bg-gradient-primary bg-clip-text text-transparent  py-1 px-4 border-2 border-violeta hover:bg-violeta2 rounded-tr-lg rounded-bl-lg whitespace-nowrap cursor-pointer select-none"
                   >
                     Iniciar Sesión
                   </button>
@@ -77,18 +81,21 @@ const Header = () => {
                     showModal={showModal}
                     setShowModal={setShowModal}
                   /> */}
-                  <button className="bg-white text-lg bg-gradient-primary text-blanco py-1.5 px-4 hover:bg-violeta2 rounded-tr-lg rounded-bl-lg">
+                  <button className="bg-white text-sm font-semibold  bg-gradient-primary text-blanco py-1.5 px-4 hover:bg-violeta2 rounded-tr-lg rounded-bl-lg cursor-pointer select-none">
                     Registrarse
                   </button>
                 </div>
               ) : (
-                <div className="flex flex-nowrap gap-4 items-center">
-                  <a className="  flex items-center h-10 w-10 p-2 bg-white/20 rounded-full backdrop-blur-sm">
-                    <Heart className=" text-violeta size-12" />
-                  </a>
+                <div className="flex flex-nowrap gap-6 items-center">
+                  <div className="  flex items-center  bg-transparent rounded-full">
+                    <img
+                      src="./icons/heart.svg"
+                      className="size-8  text-violeta transition-transform "
+                    />
+                  </div>
                   <div
-                    className="flex gap-4 "
-                    onClick={() => setIsLogin(!isLogin)}
+                    className="flex gap-4  cursor-pointer select-none"
+                    onClick={() => setIsMenuPerfilOpen(!isMenuPerfilOpen)}
                   >
                     <div className="flex items-center ">
                       <img
@@ -97,7 +104,7 @@ const Header = () => {
                         className=" h-10 w-10 rounded-full"
                       />
                     </div>
-                    <div className="flex flex-col items-start">
+                    <div className="flex flex-col items-start ">
                       <span className="text-sm text-gris font-medium">
                         Omar Luna
                       </span>
@@ -105,12 +112,18 @@ const Header = () => {
                         Mentee
                       </span>
                     </div>
-                    <ChevronDown
-                      className={`ml-0 h-6 w-4 transition-transform duration-200 ${
-                        isMenuOpen ? "rotate-180" : ""
+                    <img
+                      src="./icons/triangle.svg"
+                      className={` h-[4,7px] w-[8,6px] transition-transform duration-200  rotate-180${
+                        isMenuPerfilOpen ? "rotate-180" : ""
                       }`}
                     />
                   </div>
+                  {isMenuPerfilOpen && (
+                    
+                    <MenuPerfilModal />
+                  
+                  )}
                 </div>
               )}
             </div>

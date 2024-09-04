@@ -67,7 +67,7 @@ export default function Categories() {
   };
 
   return (
-    <div className='w-full relative slider-container'>
+    <div className='w-full relative slider-container z-20'>
       <header className='px-[120px]'>
         <small className='text-base'>Explora</small>
         <h2 className='text-lg font-semibold mb-4'>Categorías Populares</h2>
