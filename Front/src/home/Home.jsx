@@ -9,9 +9,7 @@ export default function Home() {
       </section>
 
       <Categories />
-      <section className="">
-        <Card />
-      </section>
+      
     </section>
   );
 }
