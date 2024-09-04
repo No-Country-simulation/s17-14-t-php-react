@@ -1,6 +1,6 @@
 import Categories from "./components/Categories/Categories";
 import Hero from "./components/hero/Hero";
-
+import Card from "../common/components/CardMentor";
 export default function Home() {
   return (
     <section className="">
@@ -8,8 +8,7 @@ export default function Home() {
         <Hero />
       </section>
 
-      
-        <Categories />
+      <Categories />
       
     </section>
   );

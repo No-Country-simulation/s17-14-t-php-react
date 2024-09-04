@@ -7,8 +7,6 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-   
-
     extend: {
       backgroundImage: {
         'gradient-primary': 'linear-gradient(135.3deg, #AA5BFF 24.87%, #F317FF 132.39%)',
@@ -23,9 +21,6 @@ export default {
         'violeta2': '#F317FF',
       }
     },
-  },
-  extend: {
-
   },
 
   plugins: ["prettier-plugin-tailwindcss"],
