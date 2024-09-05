@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mentor', function (Blueprint $table) {
+        Schema::create('mentors', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('description');
@@ -22,18 +22,18 @@ return new class extends Migration
             $table->float("price_min");
             $table->float("price_med");
             $table->float("price_max");
-            $table->unsignedBigInteger('skill_id');
-            $table->unsignedBigInteger('valuation_id');
+            $table->float('skill_id');
+            $table->float('valuation_id');
             $table->timestamps();
             $table->softDeletes();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations
      */
     public function down(): void
     {
-        Schema::dropIfExists('mentor');
+        Schema::dropIfExists('mentors');
     }
 };
