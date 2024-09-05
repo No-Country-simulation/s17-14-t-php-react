@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
 class Mentor extends Model
+
 {
     use HasFactory, Notifiable;
 

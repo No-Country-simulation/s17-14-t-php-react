@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class MentorController extends Controller
 {
-    //
+
     public function index()
     {
         try {
