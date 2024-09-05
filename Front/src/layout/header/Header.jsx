@@ -11,8 +11,8 @@ const Header = () => {
   return (
     <div className="min-[80px] ">
       <nav className="fixed top-0 left-0 right-0 backdrop-blur-md  z-50 ">
-        <div className="max-w-7xl mx-auto py-[18px] px-4 sm:px-6 lg:px-2">
-          <div className="flex items-center justify-between h-16">
+        <div className="max-w-full mx-auto py-[10px] px-4 sm:px-6 lg:px-2">
+          <div className="flex items-center justify-between h-16 mx-12 ">
             <div className="flex ">
               <div className="flex-shrink-0">
                 <img
