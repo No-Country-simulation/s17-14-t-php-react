@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('featured', function (Blueprint $table) {
+        Schema::create('featureds', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('mentor_id');
             $table->unsignedBigInteger('user_id');
@@ -21,10 +21,10 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations
      */
     public function down(): void
     {
-        Schema::dropIfExists('featured');
+        Schema::dropIfExists('featureds');
     }
 };
