@@ -13,16 +13,26 @@ export default {
         'gradient-secondary': 'linear-gradient(135.3deg, #FFB35B 24.87%, #F317FF 132.39%)',
       },
       colors: {
-        'transparent':'transparent',
+        'transparent': 'transparent',
         'blanco': '#ffffff',
         'blancoVioleta': '#FFCAFB',
         'gris': '#545557',
         'violeta': '#AA5BFF',
         'violeta2': '#F317FF',
-      }
+      },
+      backdropFilter: {
+        'none': 'none',
+        'blur': 'blur(20px)',
+      },
     },
   },
 
-  plugins: ["prettier-plugin-tailwindcss"],
+  variants: {
+    backdropFilter: ['responsive'], 
+  },
+  plugins: [
+    require('tailwindcss-filters'),
+    'prettier-plugin-tailwindcss',
+  ],
 
 };

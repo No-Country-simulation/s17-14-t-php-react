@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <div className="min-[80px] ">
-      <nav className="fixed top-0 left-0 right-0 backdrop-blur-md  z-50 ">
+      <nav className="fixed top-0 left-0 right-0 backdrop-blur-md bg-white/60  z-50 ">
         <div className="max-w-full mx-auto py-[10px] px-4 sm:px-6 lg:px-2">
           <div className="flex items-center justify-between h-16 mx-12 ">
             <div className="flex ">
@@ -25,7 +25,7 @@ const Header = () => {
                 <div className="ml-10 flex items-baseline gap-6">
                   <a
                     href="/"
-                    className="text-gris hover:text-violeta2  py-3 rounded-md text-base font-semibold cursor-pointer select-none"
+                    className="text-black hover:text-violeta2  py-3 rounded-md text-base font-semibold cursor-pointer select-none"
                   >
                     Inicio
                   </a>
@@ -33,7 +33,7 @@ const Header = () => {
                     className="flex items-center cursor-pointer"
                     onClick={() => setIsMenuMentoriasOpen(!isMenuMentoriasOpen)}
                   >
-                    <a className="text-gris hover:text-violeta2 pr-2 py-3 rounded-md text-base font-semibold cursor-pointer select-none ">
+                    <a className="text-black hover:text-violeta2 pr-2 py-3 rounded-md text-base font-semibold cursor-pointer select-none ">
                       Mentorías
                     </a>
                     <img
@@ -45,7 +45,7 @@ const Header = () => {
                   </div>
                   <a
                     href="#"
-                    className="text-gris hover:text-violeta2  py-3 rounded-md text-base font-semibold cursor-pointer select-none"
+                    className="text-black hover:text-violeta2  py-3 rounded-md text-base font-semibold cursor-pointer select-none"
                   >
                     Ayuda
                   </a>

@@ -1,11 +1,10 @@
 const MenuMentoriasModal = () => {
   return (
     <>
-      <div className="relative">
-        <div className="absolute top-[11px] left-[193px] w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[10px] border-b-violeta"></div>
-        <div className="absolute top-full mt-5 left-[170px] right-0 w-[400px] bg-white bg-opacity-80 border-2 border-neutral-200 backdrop-filter backdrop-blur-lg rounded-lg shadow-lg overflow-hidden transition-all duration-200 ease-in-out">
-          {/* Triángulo de globo en la parte superior izquierda */}
-
+      <div className="relative ">
+        {/* Triángulo de globo en la parte superior izquierda */}
+        <div className="absolute top-[11px] left-[193px] w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px]  border-r-transparent border-b-[10px] border-b-violeta"></div>
+        <div className="absolute top-full mt-5 left-[170px] right-0 w-[400px] bg-white bg-opacity-90 border-2 border-neutral-200 backdrop-filter backdrop-blur-xl rounded-lg shadow-lg overflow-hidden transition-all duration-200 ease-in-out">
           <div className="p-6">
             <div className="mb-6 my-2">
               <h2 className="text-base font-semibold flex items-center text-violeta">
@@ -28,7 +27,7 @@ const MenuMentoriasModal = () => {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="text-gris text-sm font-semibold hover:text-violeta2 transition-colors duration-200"
+                    className="text-black text-sm font-semibold hover:text-violeta2 transition-colors duration-200"
                   >
                     {item}
                   </li>
@@ -44,16 +43,18 @@ const MenuMentoriasModal = () => {
 
             <div>
               <div className="flex items-center h-[32px] space-x-1 bg-gradient-to-r from-blancoVioleta to-violeta rounded-xl">
-                <img src="./icons/new.svg" className="ml-2 size-[14px]" alt="newIcon" />
-                <h2 className="text-base font-semibold text-violeta">
-                  Nuevos
-                </h2>
+                <img
+                  src="./icons/new.svg"
+                  className="ml-2 size-[14px]"
+                  alt="newIcon"
+                />
+                <h2 className="text-base font-semibold text-violeta">Nuevos</h2>
               </div>
               <ul className="mt-2 space-y-2 ml-[120px] ">
                 {["Química", "Cocina", "Oratoria"].map((item) => (
                   <li
                     key={item}
-                    className="text-gris hover:text-violeta2 text-sm font-semibold transition-colors duration-200"
+                    className="text-black hover:text-violeta2 text-sm font-semibold transition-colors duration-200"
                   >
                     {item}
                   </li>
