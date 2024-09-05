@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+
     /**
      * Run the migrations.
      */
@@ -13,8 +14,14 @@ return new class extends Migration
     {
         Schema::create('mentor', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description');
             $table->string('name');
             $table->string('last');
+            $table->string('img');
+            $table->float("price_min");
+            $table->float("price_med");
+            $table->float("price_max");
             $table->unsignedBigInteger('skill_id');
             $table->unsignedBigInteger('valuation_id');
             $table->timestamps();
