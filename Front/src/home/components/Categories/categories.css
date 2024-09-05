@@ -10,6 +10,16 @@
     background: linear-gradient(to left, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
   }
 
+  .gradient-bottom {
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    top: 0;
+    width: 226px; 
+    z-index: 1;
+    pointer-events: none; 
+  }
+
   .slider-container {
     position: relative;
     box-sizing: border-box; 

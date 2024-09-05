@@ -78,7 +78,7 @@ export default function Categories() {
           {categories.map((category, index) => (
             <div
               key={category.es}
-              className='category-item flex px-3 w-[180px] h-[172px] relative'
+              className='category-item flex px-3 w-[180px] h-[172px] relative outline-none '
               ref={el => (imageRefs.current[index] = el)}
             >
               <img
@@ -86,13 +86,14 @@ export default function Categories() {
                 alt={category.es}
                 className='w-full h-full object-cover rounded-lg fade-out'
               />
-              <div className='absolute bottom-1 left-5 text-white'>
+              <div className='absolute bottom-1 left-5 text-white z-10'>
                 <h3 className='text-base font-semibold'>{category.es}</h3>
                 <div className='w-[54px] flex items-center justify-center gap-1 border rounded-xl'>
                   <PeopleIcon />
                   <span className='text-[8px]'>+{category.amount}</span>
                 </div>
               </div>
+              <div className='gradient-bottom rounded-lg'></div>
             </div>
           ))}
         </Slider>
