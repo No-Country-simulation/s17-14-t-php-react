@@ -167,6 +167,18 @@
             {
                 "puntaje": "4.9",
                 "comentario": "Diego tiene un conocimiento profundo de Python y sus clases son muy completas."
+            },{
+                "puntaje": "4.8",
+                "comentario": "Las clases son geniales."
+            },{
+                "puntaje": "4.8",
+                "comentario": "Las clases son geniales."
+            },{
+                "puntaje": "4.8",
+                "comentario": "Las clases son geniales."
+            },{
+                "puntaje": "4.8",
+                "comentario": "Las clases son geniales."
             }
         ],
         "precio": [
@@ -187,6 +199,22 @@
             "Acuarela"
         ],
         "rating": [
+            {
+                "puntaje": "4.7",
+                "comentario": "Sofía es una artista increíble, sus clases son muy inspiradoras."
+            },
+            {
+                "puntaje": "4.5",
+                "comentario": "Sofía es una artista increíble, sus clases son muy inspiradoras."
+            },
+            {
+                "puntaje": "5",
+                "comentario": "Sofía es una artista increíble, sus clases son muy inspiradoras."
+            },
+            {
+                "puntaje": "4.7",
+                "comentario": "Sofía es una artista increíble, sus clases son muy inspiradoras."
+            },
             {
                 "puntaje": "4.7",
                 "comentario": "Sofía es una artista increíble, sus clases son muy inspiradoras."
@@ -213,6 +241,15 @@
             {
                 "puntaje": "4.5",
                 "comentario": "Muy buen mentor, tiene mucha experiencia en el ámbito empresarial."
+            },{
+                "puntaje": "5",
+                "comentario": "Las clases son geniales."
+            },{
+                "puntaje": "4.2",
+                "comentario": "Las clases son geniales."
+            },{
+                "puntaje": "4.8",
+                "comentario": "Las clases son geniales."
             }
         ],
         "precio": [
@@ -236,6 +273,21 @@
             {
                 "puntaje": "4.8",
                 "comentario": "Elena es una excelente profesora, sus clases son muy dinámicas y efectivas."
+            },{
+                "puntaje": "4.1",
+                "comentario": "Las clases son geniales."
+            },{
+                "puntaje": "4.8",
+                "comentario": "Las clases son geniales."
+            },{
+                "puntaje": "4.8",
+                "comentario": "Las clases son geniales."
+            },{
+                "puntaje": "5",
+                "comentario": "Las clases son geniales."
+            },{
+                "puntaje": "4.7",
+                "comentario": "Las clases son geniales."
             }
         ],
         "precio": [
@@ -256,6 +308,18 @@
             "Edición"
         ],
         "rating": [
+            {
+                "puntaje": "4.9",
+                "comentario": "Ricardo es un mentor increíble, su pasión por la escritura es contagiosa."
+            },
+            {
+                "puntaje": "4.9",
+                "comentario": "Ricardo es un mentor increíble, su pasión por la escritura es contagiosa."
+            },
+            {
+                "puntaje": "4.9",
+                "comentario": "Ricardo es un mentor increíble, su pasión por la escritura es contagiosa."
+            },
             {
                 "puntaje": "4.9",
                 "comentario": "Ricardo es un mentor increíble, su pasión por la escritura es contagiosa."
@@ -282,6 +346,18 @@
             {
                 "puntaje": "4.8",
                 "comentario": "Isabel tiene una energía maravillosa y sus clases son muy revitalizantes."
+            },
+            {
+                "puntaje": "4.8",
+                "comentario": "Isabel tiene una energía maravillosa y sus clases son muy revitalizantes."
+            },
+            {
+                "puntaje": "4.8",
+                "comentario": "Isabel tiene una energía maravillosa y sus clases son muy revitalizantes."
+            },
+            {
+                "puntaje": "4.8",
+                "comentario": "Isabel tiene una energía maravillosa y sus clases son muy revitalizantes."
             }
         ],
         "precio": [
@@ -302,6 +378,18 @@
             "Diseño Web"
         ],
         "rating": [
+            {
+                "puntaje": "4.7",
+                "comentario": "Miguel es muy creativo y sus clases de diseño son extremadamente prácticas."
+            },
+            {
+                "puntaje": "4.7",
+                "comentario": "Miguel es muy creativo y sus clases de diseño son extremadamente prácticas."
+            },
+            {
+                "puntaje": "4.7",
+                "comentario": "Miguel es muy creativo y sus clases de diseño son extremadamente prácticas."
+            },
             {
                 "puntaje": "4.7",
                 "comentario": "Miguel es muy creativo y sus clases de diseño son extremadamente prácticas."

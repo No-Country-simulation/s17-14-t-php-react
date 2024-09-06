@@ -1,4 +1,6 @@
+
 import { useState, useEffect } from "react";
+import TopBanner from "./TopMentor";
 
 const Card = ({ mentor }) => {
   const [visibleSkills, setVisibleSkills] = useState([]);
@@ -7,7 +9,7 @@ const Card = ({ mentor }) => {
   // Calcular el promedio de puntajes
   const [average, setAverage] = useState(0);
   const [comentNum, setComentNum] = useState(0);
- 
+
   useEffect(() => {
     if (mentor.rating && mentor.rating.length > 0) {
       const totalPuntaje = mentor.rating.reduce(
@@ -44,9 +46,13 @@ const Card = ({ mentor }) => {
   }, [mentor.skills]);
 
   const lastPrice = mentor.precio.length - 1;
+
   return (
     <div className="w-[384px] h-[353px]">
       <div className="relative overflow-hidden rounded-xl shadow-lg">
+        {/* Mostrar TopBanner solo si average > 4.5 y comentNum >= 3 */}
+        {average > 4.5 && comentNum >= 3 && <TopBanner />}
+        
         <img
           src={mentor.imagen_de_perfil}
           alt="name"

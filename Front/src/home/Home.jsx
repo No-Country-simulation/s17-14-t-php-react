@@ -7,16 +7,16 @@ import FAQItemContainer from "./components/faqs/FAQItemContainer";
 export default function Home() {
   return (
     <section className="">
-      <section className="-ml-[7px]">
+      <section className="-ml-[0.5%]">
         <Hero />
       </section>
       <section className="">
         <Categories />
       </section>
-      <section className="ml-[114px]">
+      <section className="ml-[7.91%]">
         <CarouselMentors />
       </section>
-      <section className="ml-[82px]">
+      <section className="ml-[5.69%]">
         <ListMentors />
       </section>
 
