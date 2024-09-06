@@ -20,7 +20,6 @@ export default function Home() {
         <ListMentors />
       </section>
 
-      <Categories />
       <FAQItemContainer/>      
       
     </section>
