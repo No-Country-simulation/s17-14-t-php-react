@@ -14,7 +14,7 @@ const categories = [
   { en: 'Biology', es: 'Biología', amount: 150 },
   { en: 'Business', es: 'Negocios', amount: 1000 },
   { en: 'Programming', es: 'Programación', amount: 4400 },
-  { en: 'Oratory', es: 'Oratoria', amount: 500 }
+  { en: 'Speech', es: 'Oratoria', amount: 500 }
 ];
 
 export default function Categories() {
