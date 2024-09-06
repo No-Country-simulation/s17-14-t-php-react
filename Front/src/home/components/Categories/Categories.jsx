@@ -38,7 +38,7 @@ export default function Categories() {
     dots: false,
     infinite: true,
     speed: 1600,
-    slidesToShow: 6,
+    slidesToShow: 7,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -78,10 +78,11 @@ export default function Categories() {
           {categories.map((category, index) => (
             <div
               key={category.es}
-              className='category-item flex px-3 w-[180px] h-[172px] relative outline-none '
+              className='category-item fit-cover h-[172px] outline-none '
               ref={el => (imageRefs.current[index] = el)}
             >
               <img
+              
                 src={categoryImages[category.es]}
                 alt={category.es}
                 className='w-full h-full object-cover rounded-lg fade-out'

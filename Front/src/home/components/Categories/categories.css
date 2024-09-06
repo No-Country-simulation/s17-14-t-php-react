@@ -15,16 +15,25 @@
     background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
     position: absolute;
     top: 0;
-    width: 226px; 
+    width: 100%;	
     z-index: 1;
     pointer-events: none; 
   }
 
   .slider-container {
     position: relative;
-    box-sizing: border-box; 
+    box-sizing: border-box;
+
   }
   
+  .slick-slide {
+    position: relative;
+    border-radius: 8px;
+    width: 180px;
+    height: 172px;
+    margin: 0 12px;
+
+  } 
   .gradient-left, .gradient-right {
     position: absolute;
     top: 0;
