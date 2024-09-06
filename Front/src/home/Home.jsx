@@ -2,6 +2,8 @@ import Categories from "./components/Categories/Categories";
 import Hero from "./components/hero/Hero";
 import ListMentors from "./components/ListMentors/ListMentors";
 import CarouselMentors from "./components/CarouselMentors/CarouselMentors";
+import FAQItemContainer from "./components/faqs/FAQItemContainer";
+
 export default function Home() {
   return (
     <section className="">
@@ -17,6 +19,10 @@ export default function Home() {
       <section className="ml-[82px]">
         <ListMentors />
       </section>
+
+      <Categories />
+      <FAQItemContainer/>      
+      
     </section>
   );
 }
