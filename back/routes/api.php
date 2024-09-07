@@ -19,7 +19,7 @@ Route::get('mentor', [MentorController::class, 'index']);
 Route::get('mentor/{id}', [MentorController::class, 'show']);
 
 //valuation
-Route::post('valuation', [ValuationController::class, 'store']);
+Route::post('valuation', [ValuationController::class, 'store'])->name('valuation');
 
 
 // rutas privadas

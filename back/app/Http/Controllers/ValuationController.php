@@ -32,14 +32,14 @@ class ValuationController extends Controller
     public function store(Request $request)
     {
         try {
-            $authUser = Auth::user();
+            $user = Auth::user();
             $rules = [
                 'grade' => 'required|integer|between:1,5',
                 'review' => 'required|string',
 
             ];
 
-            if (!$authUser) {
+            if (!$user) {
                 Log::info('Usuario no autenticado');
                 return response()->json([
                     'message' => 'No autenticado',
@@ -54,7 +54,7 @@ class ValuationController extends Controller
             }
 
             $dataToCreate = $validator->validated();
-            $dataToCreate['user_id'] = $authUser->id;
+            $dataToCreate['user_id'] = $user->id;
             $data = Valuation::create($dataToCreate);
 
             return response()->json([
