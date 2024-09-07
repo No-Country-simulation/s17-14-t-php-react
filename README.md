@@ -19,4 +19,6 @@ Pagina de mentorias(ampliar descripcion)
  ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white) ![Ant Design](https://img.shields.io/badge/Ant_Design-0170FE?style=for-the-badge&logo=ant-design&logoColor=white)
 
 ### Gestión de Proyecto:
+
  ![Trello](https://img.shields.io/badge/trello-0052CC?style=for-the-badge&logo=trello&logoColor=white) ![GitProyect](https://img.shields.io/badge/GitProyect-050038?style=for-the-badge&logo=GitProyect&logoColor=yellow) ![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white) ![Google Drive](https://img.shields.io/badge/Google_Drive-4285F4?style=for-the-badge&logo=google-drive&logoColor=white) 
+
