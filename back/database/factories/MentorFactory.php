@@ -1,6 +1,9 @@
 <?php
 
 namespace Database\Factories;
+
+
+use App\Models\Mentor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

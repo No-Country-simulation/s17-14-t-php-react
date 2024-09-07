@@ -8,7 +8,6 @@ use Illuminate\Notifications\Notifiable;
 
 class Mentor extends Model
 
-{
     use HasFactory, Notifiable;
 
     protected $fillable = [
@@ -24,5 +23,8 @@ class Mentor extends Model
         'valuation_id'
     ];
 
+    public function chats() {
+        return $this->hasMany(Chat::class);
+    }
 
 }
