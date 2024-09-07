@@ -24,5 +24,8 @@ class Mentor extends Authenticatable
         'valuation_id'
     ];
 
+    public function chats() {
+        return $this->hasMany(Chat::class);
+    }
 
 }

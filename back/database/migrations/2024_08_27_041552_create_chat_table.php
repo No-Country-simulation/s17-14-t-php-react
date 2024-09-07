@@ -10,15 +10,20 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('chat', function (Blueprint $table) {
+    {            
+        Schema::create('chats', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('mentor_id');
-            $table->unsignedBigInteger('pay_id');
-            $table->string('message');
+            $table->unsignedBigInteger('user_id');  // Relación con users
+            $table->unsignedBigInteger('mentor_id'); // Relación con mentors
+            $table->unsignedBigInteger('pay_id')->nullable(); // Dejarlo opcional por ahora
+            $table->text('message');  // Cambiar a 'text' ya que los mensajes pueden ser largos
             $table->timestamps();
             $table->softDeletes();
+
+            // Claves foráneas
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('mentor_id')->references('id')->on('mentors')->onDelete('cascade');
+        
         });
     }
 
@@ -27,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chat');
+        Schema::dropIfExists('chats');
     }
 };
