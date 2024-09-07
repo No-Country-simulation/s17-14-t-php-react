@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Mentor;
 use Illuminate\Http\Response;
-
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class MentorController extends Controller
 {
+
     public function index()
     {
         try {
