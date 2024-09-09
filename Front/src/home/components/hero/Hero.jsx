@@ -1,11 +1,12 @@
 export default function Hero() {
-  const name = " Yuli";
+  const storedUser = localStorage.getItem("user");
+  const user = storedUser ? JSON.parse(storedUser) : null;  
 
   return (
     <div className=" h-[283px] w-full flex items-center px-[120px] justify-between pt-[120px] ">
       <div>
         <small className="text-[22px] text-[#292B2D] font-bold ">
-          Hola {name}✌
+          Hola {user?.name}✌
         </small>
         <h1 className=" text-5xl text-[#AA5BFF] font-bold ">
           ¿Qué vas a aprender hoy?{" "}
