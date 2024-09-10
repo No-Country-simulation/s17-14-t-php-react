@@ -11,10 +11,10 @@ const MenuPerfilModal = () => {
               Mi perfil
             </a>
             <a href="#" className=" text-sm font-semibold text-black hover:text-violeta2">
-              Notifiicaciones
+              Notificaciones
             </a>
             <a href="#" className=" text-sm font-semibold text-black hover:text-violeta2">
-              Darshboard
+              Dashboard
             </a>
             <a href="#"  className=" text-sm font-semibold text-neutral-500 hover:text-violeta">
               Cerrar sesión

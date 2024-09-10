@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "../../../common/components/CardMentor";
-import Mentores from "../data/Mentores.json";
+import Mentores from "../../../common/data/Mentores.json";
 
 const CarouselMentors = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -10,7 +10,7 @@ const CarouselMentors = () => {
   // Función para actualizar el número de tarjetas a mostrar según el tamaño de la pantalla
   useEffect(() => {
     const updateItemsPerPage = () => {
-      if (window.innerWidth > 1440) {
+      if (window.innerWidth >= 1700) {
         setItemsPerPage(4); // Mostrar 4 tarjetas si la pantalla es más ancha que 1440px
       } else {
         setItemsPerPage(3); // Mostrar 3 tarjetas si es más pequeña
@@ -25,31 +25,33 @@ const CarouselMentors = () => {
     return () => window.removeEventListener("resize", updateItemsPerPage);
   }, []);
 
+  // Avanzar una tarjeta
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex + itemsPerPage;
-      return newIndex < mentors.length ? newIndex : 0;
+      const newIndex = prevIndex + 1;
+      return newIndex < mentors.length ? newIndex : 0; // Reinicia si llega al final
     });
   };
 
+  // Retroceder una tarjeta
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex - itemsPerPage;
-      return newIndex >= 0 ? newIndex : mentors.length - itemsPerPage;
+      const newIndex = prevIndex - 1;
+      return newIndex >= 0 ? newIndex : mentors.length - 1; // Va al último si llega al inicio
     });
   };
 
   return (
-    <div className="relative w-full py-12 ">
+    <div className="relative w-full py-12">
       <div className="pr-[70px]">
-        <h1 className="text-[40px] font-semibold text-center text-[#707172] ">
+        <h1 className="text-[46px] font-semibold text-center text-[#707172] ">
           Inspírate
         </h1>
         <div className="flex flex-wrap items-center justify-center text-center">
-          <h1 className="text-[48px] font-semibold mb-6 text-center">
+          <h1 className="text-[56px] font-semibold mb-6 text-center">
             Con nuestros Mentores
           </h1>
-          <h1 className="text-[48px] font-semibold mb-6 text-center bg-gradient-primary bg-clip-text text-transparent py-1 px-4 hover:bg-violeta2 rounded-tr-lg rounded-bl-lg whitespace-nowrap select-none">
+          <h1 className="text-[56px] font-semibold mb-6 text-center bg-gradient-primary bg-clip-text text-transparent py-1 px-4 hover:bg-violeta2 rounded-tr-lg rounded-bl-lg whitespace-nowrap select-none">
             Destacados
           </h1>
         </div>
@@ -72,9 +74,11 @@ const CarouselMentors = () => {
             <img src="./icons/arrowL.svg" className="size-[42px]" />
           </button>
         </div>
+
+        {/* Tarjetas del carrusel */}
         <div className="flex gap-[30px]">
           {mentors
-            .slice(currentIndex, currentIndex + itemsPerPage)
+            .slice(currentIndex, currentIndex + itemsPerPage) // Mostrar tarjetas dentro del rango visible
             .map((mentor, index) => (
               <div key={index}>
                 <Card mentor={mentor} />
@@ -82,19 +86,19 @@ const CarouselMentors = () => {
             ))}
         </div>
       </div>
+
+      {/* Indicadores de navegación */}
       <div className="flex justify-center mt-4 space-x-2">
-        {Array.from({ length: Math.ceil(mentors.length / itemsPerPage) }).map(
-          (_, index) => (
-            <button
-              key={index}
-              className={`w-16 h-2 rounded-sm ${
-                index * itemsPerPage === currentIndex ? "bg-[#545454]" : "bg-[#D9D9D9]"
-              }`}
-              onClick={() => setCurrentIndex(index * itemsPerPage)}
-              aria-label={`Ir a la página ${index + 1}`}
-            />
-          )
-        )}
+        {Array.from({ length: mentors.length }).map((_, index) => (
+          <button
+            key={index}
+            className={`w-4 h-2 rounded-sm ${
+              index === currentIndex ? "bg-[#545454]" : "bg-[#D9D9D9]"
+            }`}
+            onClick={() => setCurrentIndex(index)}
+            aria-label={`Ir a la tarjeta ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
