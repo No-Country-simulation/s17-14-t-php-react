@@ -5,6 +5,7 @@ import CarouselMentors from "./components/CarouselMentors/CarouselMentors";
 import FAQItemContainer from "./components/faqs/FAQItemContainer";
 import MentorProgress from "./mentorprogress/MentorProgress";
 
+
 export default function Home() {
   return (
     <section className="">
@@ -24,7 +25,7 @@ export default function Home() {
         <ListMentors />
       </section>
 
-      <FAQItemContainer/>      
+      <FAQItemContainer/>    
       
     </section>
   );

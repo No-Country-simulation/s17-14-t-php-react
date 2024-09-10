@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import {  useState } from "react";
 const FAQItem = ({ question, answer }) => {
     const [isOpen, setIsOpen] = useState(false);
 
