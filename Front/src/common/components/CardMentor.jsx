@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import TopBanner from "./TopMentor";
+import averageAndCommetsNum from "../helper/averageAndCommetsNum";
+import visibleSkill from "../helper/visibleSkill";
 
 const Card = ({ mentor }) => {
   const [visibleSkills, setVisibleSkills] = useState([]);
@@ -11,38 +13,16 @@ const Card = ({ mentor }) => {
   const [comentNum, setComentNum] = useState(0);
 
   useEffect(() => {
-    if (mentor.rating && mentor.rating.length > 0) {
-      const totalPuntaje = mentor.rating.reduce(
-        (sum, review) => sum + parseFloat(review.puntaje),
-        0
-      );
-      const countComents = mentor.rating.length;
-      const averagePuntaje = totalPuntaje / countComents;
-
-      setAverage(averagePuntaje.toFixed(1)); // Redondear a 1 decimal
-      setComentNum(countComents);
-    }
+    const averageAndCommets=averageAndCommetsNum(mentor.rating)
+      setAverage(averageAndCommets.average); // Redondear a 1 decimal
+      setComentNum(averageAndCommets.countComents);
+    
   }, [mentor.rating]);
 
   useEffect(() => {
-    let totalChars = 0;
-    const visible = [];
-    let remaining = 0;
-
-    for (let i = 0; i < mentor.skills.length; i++) {
-      const skillLength = mentor.skills[i].length;
-
-      if (totalChars + skillLength > 23) {
-        remaining = mentor.skills.length - i;
-        break;
-      }
-
-      totalChars += skillLength;
-      visible.push(mentor.skills[i]);
-    }
-
-    setVisibleSkills(visible);
-    setRemainingCount(remaining);
+    const visibleSkills =visibleSkill(mentor.skills,23)
+    setVisibleSkills(visibleSkills.visible);
+    setRemainingCount(visibleSkills.remaining);
   }, [mentor.skills]);
 
   const lastPrice = mentor.precio.length - 1;

@@ -55,18 +55,23 @@ const Header = () => {
               </div>
             </div>
             <div className="flex flex-row gap-6 h-[42px]  items-right">
-              <div className="flex items-center w-[360px] border-violeta border-2 rounded-lg">
-                <img
-                  src="./icons/lupa.svg"
-                  className="ml-2 size-[18px] text-black fill-black select-none"
-                  alt="search"
-                />
-                <input
-                  type="search"
-                  placeholder="Buscar mentoría..."
-                  className="bg-violeta text-sm font-medium placeholder-black bg-clip-text text text-violeta py-1 px-4 flex-1 outline-none "
-                />
-              </div>
+              {location.pathname !== "/search" ? (
+                <div className="flex items-center w-[360px] border-violeta border-2 rounded-lg">
+                  <img
+                    src="./icons/lupa.svg"
+                    className="ml-2 size-[18px] text-black fill-black select-none"
+                    alt="search"
+                  />
+                  <input
+                    type="search"
+                    placeholder="Buscar mentoría..."
+                    className="bg-violeta text-sm font-medium placeholder-black bg-clip-text text text-violeta py-1 px-4 flex-1 outline-none "
+                  />
+                </div>
+              ) : (
+                <></>
+              )}
+
               {isLogin ? (
                 <div className="flex gap-6">
                   <button
@@ -119,11 +124,7 @@ const Header = () => {
                       }`}
                     />
                   </div>
-                  {isMenuPerfilOpen && (
-                    
-                    <MenuPerfilModal />
-                  
-                  )}
+                  {isMenuPerfilOpen && <MenuPerfilModal />}
                 </div>
               )}
             </div>

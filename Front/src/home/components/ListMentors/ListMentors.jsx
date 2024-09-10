@@ -1,5 +1,5 @@
 import Card from "../../../common/components/CardMentor";
-import Mentores from "../data/Mentores.json";
+import Mentores from "../../../common/data/Mentores.json";
 
 function ListMentors() {
   const mentors = Mentores.slice(0,6);
