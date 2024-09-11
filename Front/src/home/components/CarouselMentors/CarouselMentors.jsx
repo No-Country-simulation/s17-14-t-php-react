@@ -10,8 +10,8 @@ const CarouselMentors = () => {
   // Función para actualizar el número de tarjetas a mostrar según el tamaño de la pantalla
   useEffect(() => {
     const updateItemsPerPage = () => {
-      if (window.innerWidth >= 1400) {
-        setItemsPerPage(3); // Mostrar 4 tarjetas si la pantalla es más ancha que 1440. desactivado de momento
+      if (window.innerWidth <= 780) {
+        setItemsPerPage(1); // Mostrar 1 tarjetas si la pantalla es más chica. 
       } else {
         setItemsPerPage(3); // Mostrar 3 tarjetas si es más pequeña
       }
@@ -45,7 +45,6 @@ const CarouselMentors = () => {
     <div className="relative w-full min-h-screen flex flex-col justify-center items-center py-12">
       <div className="">
         <h1 className="text-[46px] font-semibold text-center text-[#707172]">
-
           Inspírate
         </h1>
         <div className="flex flex-wrap items-center justify-center text-center">
@@ -58,7 +57,7 @@ const CarouselMentors = () => {
         </div>
       </div>
 
-      <div className="overflow-hidden w-[1212px] flex flex-col">
+      <div className="overflow-hidden xl:w-[1212px] md:w-[384px] flex flex-col">
         <div className="bg-white/80 hover:bg-white pb-3 flex flex-row-reverse rounded-full">
           <button
             className="bg-white/80 hover:bg-white p-2 rounded-full"

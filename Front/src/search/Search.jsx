@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./components/Card";
 import Mentores from "../common/data/Mentores.json";
+import styles from "./Search.module.css";
 
 const categories = [
   {
@@ -78,7 +79,6 @@ const MentorSearchAndFilter = () => {
     e.target.style.background = `linear-gradient(to right, #AA5BFF ${percentage}%, #BDBDBE ${percentage}%)`;
   };
 
-
   return (
     <div className="container mx-auto p-4 flex mt-[80px] flex-col md:flex-row gap-8">
       <div className="w-full md:w-3/4">
@@ -99,7 +99,6 @@ const MentorSearchAndFilter = () => {
           {selectedCategories.map((category) => (
             <span
               key={category}
-
               className="flex h-[25px] items-center pl-2 pr-1 text- text-[#545557] border-[#545557] border-[1px] text-sm font-semibold rounded-[4px] backdrop-blur-xl"
             >
               {category}
@@ -240,7 +239,6 @@ const MentorSearchAndFilter = () => {
         {/* Precio */}
 
         <div className="">
-
           <div
             className={`flex items-center justify-between w-full p-2 font-semibold bg-gray-100 rounded-t-lg cursor-pointer`}
             onClick={() => setIsPriceOpen(!isPriceOpen)}
@@ -255,30 +253,28 @@ const MentorSearchAndFilter = () => {
           </div>
           {isPriceOpen && (
             <div>
+              <div className="flex items-center justify-center">
+              <input
                 type="range"
                 id="price-range-slider"
                 min={priceRange[0]}
                 max={maxPrice}
                 value={priceRange[1]}
                 onChange={handleSliderChange}
-
                 className={` ${styles.input}  appearance-none mt-4 rounded-[8px]`}
-
               />
-
+</div>
               <div className="flex justify-between items-center mt-2">
                 <span className="text-sm text-gray-600">{priceRange[0]}</span>
                 <span className="text-sm text-gray-600">{priceRange[1]}</span>
                 <span className="text-sm text-gray-600">Max</span>
               </div>
 
-
               <div className="mt-4 flex justify-between mr-6 ml-3">
                 <div className="flex flex-nowrap items-center gap-5">
                   <label
                     htmlFor="min-price"
                     className="block text-sm font-semibold text-[#707172]"
-
                   >
                     Desde
                   </label>
@@ -292,7 +288,6 @@ const MentorSearchAndFilter = () => {
                         setPriceRange([newMin, priceRange[1]]);
                       }
                     }}
-
                     className="mt-1 w-24 h-[40px] text-center border border-[#BDBDBE] rounded"
                   />
                 </div>
@@ -301,7 +296,6 @@ const MentorSearchAndFilter = () => {
                   <label
                     htmlFor="max-price"
                     className="block text-sm font-semibold text-[#707172]"
-
                   >
                     Hasta
                   </label>
@@ -315,9 +309,7 @@ const MentorSearchAndFilter = () => {
                         setPriceRange([priceRange[0], newMax]);
                       }
                     }}
-
                     className="mt-1 w-24  h-[40px] border   text-center  border-[#BDBDBE] rounded"
-
                   />
                 </div>
               </div>
