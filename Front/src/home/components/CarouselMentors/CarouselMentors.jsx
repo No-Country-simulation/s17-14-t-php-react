@@ -11,7 +11,7 @@ const CarouselMentors = () => {
   useEffect(() => {
     const updateItemsPerPage = () => {
       if (window.innerWidth >= 1400) {
-        setItemsPerPage(3); // Mostrar 4 tarjetas si la pantalla es más ancha que 1440px
+        setItemsPerPage(3); // Mostrar 4 tarjetas si la pantalla es más ancha que 1440. desactivado de momento
       } else {
         setItemsPerPage(3); // Mostrar 3 tarjetas si es más pequeña
       }
@@ -45,6 +45,7 @@ const CarouselMentors = () => {
     <div className="relative w-full min-h-screen flex flex-col justify-center items-center py-12">
       <div className="">
         <h1 className="text-[46px] font-semibold text-center text-[#707172]">
+
           Inspírate
         </h1>
         <div className="flex flex-wrap items-center justify-center text-center">
@@ -78,7 +79,7 @@ const CarouselMentors = () => {
         {/* Tarjetas del carrusel */}
         <div className="flex gap-[30px] justify-center">
           {mentors
-            .slice(currentIndex, currentIndex + itemsPerPage)
+            .slice(currentIndex, currentIndex + itemsPerPage) // Mostrar tarjetas dentro del rango visible
             .map((mentor, index) => (
               <div key={index}>
                 <Card mentor={mentor} />
