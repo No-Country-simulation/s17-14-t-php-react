@@ -5,11 +5,10 @@ import CarouselMentors from "./components/CarouselMentors/CarouselMentors";
 import FAQItemContainer from "./components/faqs/FAQItemContainer";
 import MentorProgress from "./mentorprogress/MentorProgress";
 
-
 export default function Home() {
   return (
     <section className="">
-      <section className="-ml-[0.5%]">
+      <section className="">
         <Hero />
       </section>
       <section>
@@ -18,15 +17,12 @@ export default function Home() {
       <section className="">
         <Categories />
       </section>
-      <section className="ml-[7.91%]">
-        <CarouselMentors />
-      </section>
-      <section className="ml-[5.69%]">
-        <ListMentors />
-      </section>
 
-      <FAQItemContainer/>    
-      
+      <CarouselMentors />
+
+      <ListMentors />
+
+      <FAQItemContainer />
     </section>
   );
 }
