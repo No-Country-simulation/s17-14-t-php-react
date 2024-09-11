@@ -28,7 +28,7 @@ const CarouselMentors = () => {
   // Avanzar una tarjeta
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex + 1;
+      const newIndex = prevIndex + 3;
       return newIndex < mentors.length ? newIndex : 0; // Reinicia si llega al final
     });
   };
@@ -36,8 +36,8 @@ const CarouselMentors = () => {
   // Retroceder una tarjeta
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex - 1;
-      return newIndex >= 0 ? newIndex : mentors.length - 1; // Va al último si llega al inicio
+      const newIndex = prevIndex - 3;
+      return newIndex > 0 ? newIndex : mentors.length - 0; // Va al último si llega al inicio
     });
   };
 
@@ -88,15 +88,15 @@ const CarouselMentors = () => {
       </div>
 
       {/* Indicadores de navegación */}
-      <div className="flex justify-center mt-4 space-x-2">
-        {Array.from({ length: mentors.length }).map((_, index) => (
+      <div className="flex justify-center mt-4 w-[250px] space-x-2">
+        {Array.from({ length: mentors.length / 3 }).map((_, index) => (
           <button
             key={index}
             className={`w-4 h-2 rounded-sm ${
-              index === currentIndex ? "bg-[#545454]" : "bg-[#D9D9D9]"
+              index * 3 === currentIndex ? "bg-[#545454]" : "bg-[#D9D9D9]"
             }`}
             onClick={() => setCurrentIndex(index)}
-            aria-label={`Ir a la tarjeta ${index + 1}`}
+            aria-label={`Ir a la tarjeta ${index + 3}`}
           />
         ))}
       </div>
