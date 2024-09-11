@@ -34,7 +34,7 @@ const MentorSearchAndFilter = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategories, setSelectedCategories] = useState(["Matemáticas"]);
   const [selectedSkills, setSelectedSkills] = useState([]);
-  const [priceRange, setPriceRange] = useState([0, 0]);
+  const [priceRange, setPriceRange] = useState([0, 500]);
 
   const [isCategoryOpen, setIsCategoryOpen] = useState(true); // Estado para desplegar categorías
   const [isSkillsOpen, setIsSkillsOpen] = useState(true); // Estado para desplegar habilidades
@@ -70,14 +70,13 @@ const MentorSearchAndFilter = () => {
   const handleSliderChange = (e) => {
     const newValue = parseInt(e.target.value);
     setPriceRange([priceRange[0], newValue]);
-
-    const min = priceRange[0];
-    const max = maxPrice;
-    const percentage = ((newValue - min) / (max - min)) * 100;
-
-    e.target.style.background = `linear-gradient(to right, #AA5BFF ${percentage}%, #BDBDBE ${percentage}%)`;
   };
 
+  const getBackgroundSize = () => {
+    const percentage =
+      ((priceRange[1] - priceRange[0]) / (maxPrice - priceRange[0])) * 100;
+    return `${percentage}% 100%`;
+  };
 
   return (
     <div className="container mx-auto p-4 flex mt-[80px] flex-col md:flex-row gap-8">
@@ -99,8 +98,7 @@ const MentorSearchAndFilter = () => {
           {selectedCategories.map((category) => (
             <span
               key={category}
-
-              className="flex h-[25px] items-center pl-2 pr-1 text- text-[#545557] border-[#545557] border-[1px] text-sm font-semibold rounded-[4px] backdrop-blur-xl"
+              className="flex h-[25px] items-center pl-2 pr-1 text-[#545557] border-[#545557] border-[1px] text-sm font-semibold rounded-[4px] backdrop-blur-xl"
             >
               {category}
               <button
@@ -129,12 +127,10 @@ const MentorSearchAndFilter = () => {
             <p className="text-black font-semibold text-lg ">
               Resultados búsqueda "matemáticas"
             </p>
-            {/* Colocar un limite de escritura en el buscador */}
+        {/* Colocar un limite de escritura en el buscador */}
 
             <div className="flex flex-nowrap h-[21px]">
-              <button className="text-sm text-[#545557] font-semibold">
-                Ordenar Por{" "}
-              </button>
+              <button className="text-sm text-[#545557] font-semibold">Ordenar Por </button>
               <img src="./icons/orderArrow.svg" className="ml-2  size-5" />
             </div>
           </div>
@@ -239,8 +235,7 @@ const MentorSearchAndFilter = () => {
 
         {/* Precio */}
 
-        <div className="">
-
+        <div className="mb-4">
           <div
             className={`flex items-center justify-between w-full p-2 font-semibold bg-gray-100 rounded-t-lg cursor-pointer`}
             onClick={() => setIsPriceOpen(!isPriceOpen)}
@@ -255,15 +250,24 @@ const MentorSearchAndFilter = () => {
           </div>
           {isPriceOpen && (
             <div>
+              <label
+                htmlFor="price-range-slider"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Rango de precio
+              </label>
+
+              <input
                 type="range"
                 id="price-range-slider"
                 min={priceRange[0]}
                 max={maxPrice}
                 value={priceRange[1]}
                 onChange={handleSliderChange}
-
-                className={` ${styles.input}  appearance-none mt-4 rounded-[8px]`}
-
+                className="w-full mt-1 appearance-none h-2 rounded-full cursor-pointer"
+                style={{
+                  background: `linear-gradient(to right, #d300cf ${getBackgroundSize()}, #E5E7EB 0%)`,
+                }}
               />
 
               <div className="flex justify-between items-center mt-2">
@@ -272,13 +276,11 @@ const MentorSearchAndFilter = () => {
                 <span className="text-sm text-gray-600">Max</span>
               </div>
 
-
-              <div className="mt-4 flex justify-between mr-6 ml-3">
-                <div className="flex flex-nowrap items-center gap-5">
+              <div className="mt-4 flex justify-between">
+                <div>
                   <label
                     htmlFor="min-price"
-                    className="block text-sm font-semibold text-[#707172]"
-
+                    className="block text-sm font-medium text-gray-700"
                   >
                     Desde
                   </label>
@@ -292,16 +294,14 @@ const MentorSearchAndFilter = () => {
                         setPriceRange([newMin, priceRange[1]]);
                       }
                     }}
-
-                    className="mt-1 w-24 h-[40px] text-center border border-[#BDBDBE] rounded"
+                    className="mt-1 w-24 border border-gray-300 rounded"
                   />
                 </div>
 
-                <div className="flex flex-nowrap  items-center gap-5 ">
+                <div>
                   <label
                     htmlFor="max-price"
-                    className="block text-sm font-semibold text-[#707172]"
-
+                    className="block text-sm font-medium text-gray-700"
                   >
                     Hasta
                   </label>
@@ -315,9 +315,7 @@ const MentorSearchAndFilter = () => {
                         setPriceRange([priceRange[0], newMax]);
                       }
                     }}
-
-                    className="mt-1 w-24  h-[40px] border   text-center  border-[#BDBDBE] rounded"
-
+                    className="mt-1 w-24 border border-gray-300 rounded"
                   />
                 </div>
               </div>
