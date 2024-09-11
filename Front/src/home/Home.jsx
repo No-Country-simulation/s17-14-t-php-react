@@ -8,7 +8,7 @@ import MentorProgress from "./mentorprogress/MentorProgress";
 export default function Home() {
   return (
     <section className="">
-      <section className="-ml-[0.5%]">
+      <section className="">
         <Hero />
       </section>
       <section>
@@ -17,15 +17,12 @@ export default function Home() {
       <section className=" overflow-x-hidden">
         <Categories />
       </section>
-      <section className="ml-[7.91%]">
-        <CarouselMentors />
-      </section>
-      <section className="ml-[5.69%]">
-        <ListMentors />
-      </section>
 
-      <FAQItemContainer/>      
-      
+      <CarouselMentors />
+
+      <ListMentors />
+
+      <FAQItemContainer />
     </section>
   );
 }

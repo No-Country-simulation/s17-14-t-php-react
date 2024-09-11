@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import MentorCard from "./components/MentorCard";
 import MentorRecomendedCard from "./components/MentorRecomendedCard";
-import Mentores from "../components/data/Mentores.json";
+import Mentores from "../../common/data/Mentores.json";
 
 export default function MentorProgress() {
   const mentors = Mentores;
