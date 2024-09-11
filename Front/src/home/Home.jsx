@@ -14,7 +14,7 @@ export default function Home() {
       <section>
         <MentorProgress />
       </section>
-      <section className="">
+      <section className=" overflow-x-hidden">
         <Categories />
       </section>
       <section className="ml-[7.91%]">

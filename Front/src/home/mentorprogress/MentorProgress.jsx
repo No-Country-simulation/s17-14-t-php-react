@@ -9,7 +9,7 @@ export default function MentorProgress() {
 
   // Simulamos aleatoriamente si hay mentores o no
   useEffect(() => {
-    const randomMentorAvailability = Math.random() > 0.5; // 50% de probabilidad de que haya mentores
+    const randomMentorAvailability = Math.random() > 0.3; // 50% de probabilidad de que haya mentores
     setHasMentors(randomMentorAvailability);
   }, []);
 
@@ -36,16 +36,8 @@ export default function MentorProgress() {
           <p className="text-sm text-[#707172] font-semibold">
             Elige un mentor y empieza a transformar tu futuro
           </p>
-          <button className="relative p-3 rounded-lg text-[#AA5BFF] hover:text-white group">
-            <span className="relative z-10 text-md font-semibold">Buscar mentor</span>
-            <div
-              className="absolute inset-0 rounded-lg border-2 border-transparent
-              bg-gradient-to-r from-[#AA5BFF] to-[#F317FF] 
-
-              group-hover:bg-transparent"
-            >
-              <div className="h-full w-full bg-white rounded-lg group-hover:bg-gradient-to-r from-[#AA5BFF] to-[#F317FF]"></div>
-            </div>
+          <button className="bg-white text-sm font-semibold  bg-gradient-primary bg-clip-text text-transparent  py-2 px-4 border-2 border-violeta hover:bg-violeta2 rounded-tr-lg rounded-bl-lg whitespace-nowrap cursor-pointer select-none ">
+            <span className=" text-md font-semibold">Buscar mentor</span>
           </button>
         </div>
       )}
