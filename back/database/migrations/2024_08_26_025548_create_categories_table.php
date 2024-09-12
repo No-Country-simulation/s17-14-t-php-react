@@ -11,21 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('valuations', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->float('grade');
-            $table->string('review');
+            $table->string('name');
             $table->timestamps();
             $table->softDeletes();
         });
     }
 
     /**
-     * Reverse the migrations
+     * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('valuations');
+        Schema::dropIfExists('categories');
     }
 };

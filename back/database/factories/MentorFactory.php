@@ -4,6 +4,9 @@ namespace Database\Factories;
 
 
 use App\Models\Mentor;
+use App\Models\Category;
+use App\Models\Skill;
+use App\Models\Valuation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -25,9 +28,9 @@ class MentorFactory extends Factory
             'price_min' => $this->faker->randomFloat(2, 10, 100), // Precio mínimo
             'price_med' => $this->faker->randomFloat(2, 100, 200), // Precio medio
             'price_max' => $this->faker->randomFloat(2, 200, 500), // Precio máximo
-            'skill_id' => $this->faker->randomFloat(1, 10), // Asume que hay skills con IDs del 1 al 10
-            'valuation_id' => $this->faker->randomFloat(1, 10) // Asume que hay valuaciones con IDs del 1 al 10
-            //'valuation_id' => $this->faker->numberBetween(1, 10) // Asume que hay valuaciones con IDs del 1 al 10
+            'skill_id' => Skill::inRandomOrder()->first()->id,
+            'valuation_id' => Valuation::inRandomOrder()->first()->id,
+            'category_id' => Category::inRandomOrder()->first()->id
         ];
     }
 }

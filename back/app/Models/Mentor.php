@@ -21,11 +21,16 @@ class Mentor extends Model
         'price_med',
         'price_max',
         'skill_id',
-        'valuation_id'
+        'valuation_id',
+        'category_id'
     ];
 
     public function chats() {
         return $this->hasMany(Chat::class);
+    }
+    public function skill()
+    {
+        return $this->belongsTo(Skill::class);
     }
 
 }

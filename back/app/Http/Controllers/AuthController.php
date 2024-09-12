@@ -21,7 +21,9 @@ class AuthController extends Controller
         ]);
 
         if (!Auth::attempt($credentials)) {
-            return response()->json(['error' => 'Los datos suministrados son incorrectos'], 401);
+            return response()->json([
+                'error' => 'Los datos suministrados son incorrectos'
+            ], 401);
         }
 
         $user = $request->user();
@@ -55,7 +57,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|unique:users',
-            'password' => 'required|min:6|',
+            'password' => 'required|min:6|confirmed',
         ]);
         if($validator->fails()) {
             return response()->json([

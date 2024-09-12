@@ -4,7 +4,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\MentorController;
-use App\Http\Controllers\MentorController;
+use App\Http\Controllers\SearchControlador;
 use App\Http\Controllers\ValuationController;
 use AWS\CRT\HTTP\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,10 +17,9 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 //mentor
 Route::get('mentor', [MentorController::class, 'index']);
 Route::get('mentor/{id}', [MentorController::class, 'show']);
-
-//valuation
-Route::post('valuation', [ValuationController::class, 'store']);
-
+//search
+Route::get('/search/{type}/{query}', [SearchControlador::class, 'index']);
+Route::get('/search', [SearchControlador::class, 'search']);
 
 // rutas privadas
 Route::middleware('auth:api')->group(function () {
@@ -36,4 +35,8 @@ Route::middleware('auth:api')->group(function () {
 
     // Ruta para obtener mensajes entre un usuario y un mentor
     Route::get('/chat/{mentor_id}', [ChatController::class, 'getMessages']);
+    //valuation
+    Route::post('valuation', [ValuationController::class, 'store'])->name('valuation');
+    Route::put('valuation/{id}', [ValuationController::class, 'update'])->name('valuation');
+
 });

@@ -5,26 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Notifications\Notifiable;
 
-class Valuation extends Model
+class Category extends Model
 {
-    use HasFactory, Notifiable, SoftDeletes;
-
+    use HasFactory, SoftDeletes;
     protected $fillable = [
-        'user_id',
-        'grade',
-        'review'
+        'name'
     ];
-    // Relación con usuarios
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+
     public function mentors()
     {
         return $this->hasMany(Mentor::class);
     }
+
 }
-
-
