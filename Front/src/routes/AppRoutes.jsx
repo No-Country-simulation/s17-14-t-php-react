@@ -2,6 +2,7 @@ import { Routes, Route,BrowserRouter } from "react-router-dom";
 import Home from "../home/Home";
 import Header from "../layout/header/Header";
 import Footer from "../layout/footer/Footer";
+import MentorSearchAndFilter from "../search/Search"
 
 export default function AppRoutes() {
   return (
