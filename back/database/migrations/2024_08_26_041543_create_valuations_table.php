@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('searchs', function (Blueprint $table) {
+        Schema::create('valuations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mentor_id');
-            $table->unsignedBigInteger('valuation_id');
-            $table->unsignedBigInteger('skill_id');
+            $table->unsignedBigInteger('user_id');
+            $table->float('grade');
+            $table->string('review');
             $table->timestamps();
             $table->softDeletes();
+
+            // Claves foráneas
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('searchs');
+        Schema::dropIfExists('valuations');
     }
 };

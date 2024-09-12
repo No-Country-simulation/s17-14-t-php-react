@@ -22,10 +22,17 @@ return new class extends Migration
             $table->float("price_min");
             $table->float("price_med");
             $table->float("price_max");
-            $table->float('skill_id');
-            $table->float('valuation_id');
+            $table->unsignedBigInteger('skill_id');
+            $table->unsignedBigInteger('valuation_id');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
             $table->softDeletes();
+
+            // Claves foráneas
+            $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');
+            $table->foreign('valuation_id')->references('id')->on('valuations')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
         });
     }
 
