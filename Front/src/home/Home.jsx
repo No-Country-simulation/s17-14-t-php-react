@@ -11,7 +11,7 @@ export default function Home() {
       <section className="">
         <Hero />
       </section>
-      <section>
+      <section className="flex justify-center">
         <MentorProgress />
       </section>
       <section className=" overflow-x-hidden">

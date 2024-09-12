@@ -68,12 +68,12 @@ export default function Categories() {
 
   return (
     <div className=' relative slider-container z-20'>
-      <header className='pl-[120px]'>
+      <header className='pl-[195px]'>
         <small className='text-base'>Explora</small>
         <h2 className='text-lg font-semibold mb-4'>Categorías Populares</h2>
       </header>
 
-      <div className='relative h-[172px]'>
+      <div className='relative'>
         <Slider {...settings}>
           {categories.map((category, index) => (
             <div
