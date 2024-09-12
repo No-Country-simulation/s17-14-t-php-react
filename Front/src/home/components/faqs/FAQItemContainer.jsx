@@ -8,7 +8,7 @@ function FAQItemContainer() {
             answer: 'Para contratar un mentor, simplemente explora las categorías disponibles o utiliza la función de búsqueda para encontrar al mentor ideal. Una vez seleccionado, revisa su perfil y haz clic en "Contratar". Podrás elegir entre las diferentes opciones de sesiones y completar el pago de forma segura.'
         },
         {
-            question: '¿Qué métodos de pago acepta Mentors?',
+            question: '¿Qué métodos de pago acepta Mentos?',
             answer: 'Aceptamos varios métodos de pago, incluyendo tarjetas de crédito, débito y servicios de pago en línea como PayPal. Todos los pagos se procesan de manera segura y confiable.'
         },
         {
@@ -26,7 +26,7 @@ function FAQItemContainer() {
     ];
 
     return (
-        <div className="flex gap-4 flex-col items-center justify-center min-h-screen bg-gray-100  ">
+        <div className="flex gap-4 flex-col items-center justify-center min-h-screen bg-gray-50  ">
             <h1 className="text-[40px] text-gray-500 font-semibold text-center mt-12 ">¿Dudas?</h1>
             <h2 className="text-[48px] font-semibold text-center text-purple-600 mb-6"><span className='text-black'>Consulta nuestras </span> FAQs</h2>
             <div className=" flex flex-col w-full px-[120px] min-h-[324px] gap-4  ">
@@ -35,7 +35,7 @@ function FAQItemContainer() {
                 ))}
             </div>
             <div className="mt-8 ">
-                <button className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700">
+                <button className="bg-gradient-primary text-white px-6 py-3 rounded-lg hover:bg-purple-700">
                     Ponte en contacto con Nosotros
                 </button>
             </div>

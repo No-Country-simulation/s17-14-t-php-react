@@ -1,7 +1,8 @@
 import { Routes, Route,BrowserRouter } from "react-router-dom";
 import Home from "../home/Home";
 import Header from "../layout/header/Header";
-import MentorSearchAndFilter from "../search/Search";
+import Footer from "../layout/footer/Footer";
+import MentorSearchAndFilter from "../search/Search"
 
 export default function AppRoutes() {
   return (
@@ -16,6 +17,7 @@ export default function AppRoutes() {
       <Route path="/*" element={<Home />} />
       <Route path="/search" element={<MentorSearchAndFilter />} />
     </Routes>
+    <Footer/>
     </BrowserRouter>
   )
 }
