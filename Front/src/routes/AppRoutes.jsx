@@ -4,6 +4,7 @@ import Header from "../layout/header/Header";
 import MentorSearchAndFilter from "../search/Search";
 import MentorInfoPage from "../mentor/MentorInfoPage";
 import Footer from "../layout/footer/Footer";
+import Dashboard from "../dashboard/Dashboard";
 
 
 export default function AppRoutes() {
@@ -14,6 +15,7 @@ export default function AppRoutes() {
       {location.pathname !== "/admin" ? <Header /> : <></>}
       <Routes>
         <Route path="/*" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/search" element={<MentorSearchAndFilter />} />
         <Route path="/mentor/:id" element={<MentorInfoPage />} />
       </Routes>
