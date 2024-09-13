@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\FeaturedController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\SearchControlador;
 use App\Http\Controllers\ValuationController;
@@ -20,7 +21,10 @@ Route::get('mentor/{id}', [MentorController::class, 'show']);
 //search
 Route::get('/search/{type}/{query}', [SearchControlador::class, 'index']);
 Route::get('/search', [SearchControlador::class, 'search']);
-
+//valuation
+Route::get('/valuation', [ValuationController::class, 'topRated']);
+//featured
+Route::get('/featured',[FeaturedController::class, 'index']);
 // rutas privadas
 Route::middleware('auth:api')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

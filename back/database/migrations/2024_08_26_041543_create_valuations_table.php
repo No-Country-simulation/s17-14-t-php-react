@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('valuations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('mentor_id');
             $table->float('grade');
             $table->string('review');
             $table->timestamps();
@@ -21,6 +22,7 @@ return new class extends Migration
 
             // Claves foráneas
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('mentor_id')->references('id')->on('mentors')->onDelete('cascade');
         });
     }
 

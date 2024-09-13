@@ -13,6 +13,7 @@ class Valuation extends Model
 
     protected $fillable = [
         'user_id',
+        'mentor_id',
         'grade',
         'review'
     ];
