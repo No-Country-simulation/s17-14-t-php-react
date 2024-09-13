@@ -126,15 +126,18 @@ const reducer = (state = initialState, { type, payload }) => {
         allMentorsCopy: payload,
       };
     case FILTER_BY_PRICE_RANGE:
-      if (payload === "ALL")
-        return {
-          ...state,
-          allMentorsCopy: payload,
-        };
       return {
         ...state,
-        allMentorsCopy: payload,
+        allMentorsCopy: state.allMentors.filter(mentor => {
+          const [minPrice, maxPrice] = payload; // valores del rango de precios que llegan
+          const mentorMinPrice = mentor.pricing[0]; // precio mínimo del mentor
+          const mentorMaxPrice = mentor.pricing[mentor.pricing.length - 1]; // precio máximo del mentor (último valor)
+
+          // Verificar que los precios del mentor estén dentro del rango proporcionado
+          return mentorMinPrice >= minPrice && mentorMaxPrice <= maxPrice;
+        }),
       };
+
 
     //----------------------------ORDER-------------------
     case ORDER_BY_PRICE: {

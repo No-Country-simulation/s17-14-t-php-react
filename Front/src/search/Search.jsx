@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 
 import {
   FilterByCategory,
+  FilterByPriceRange,
   FilterBySkills,
   getAllMentor,
   orderByName,
@@ -53,7 +54,7 @@ const MentorSearchAndFilter = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(true); // Estado para desplegar categorías
   const [isSkillsOpen, setIsSkillsOpen] = useState(true); // Estado para desplegar habilidades
   const [isPriceOpen, setIsPriceOpen] = useState(true); // Estado para desplegar precio
-  const [maxPrice, setMaxPrice] = useState(1000); // Estado para desplegar precio
+  const [maxPrice, setMaxPrice] = useState(500); // Estado para desplegar precio
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -69,6 +70,11 @@ const MentorSearchAndFilter = () => {
       dispatch({ type: "RESET_FILTER" }); // Reinicia el filtro
     }
   }, [category, dispatch]);
+  useEffect(() => {
+    dispatch({ type: "RESET_FILTER" }); // Reinicia el filtro
+
+    dispatch(FilterByPriceRange(priceRange))
+  }, [priceRange, dispatch]);
 
   useEffect(() => {
     if (!allMentors || allMentors.length === 0) {
@@ -89,7 +95,6 @@ const MentorSearchAndFilter = () => {
       dispatch(FilterByCategory(category)); // Filtra por la nueva categoría seleccionada
     }
   };
-
   const toggleSkill = (skill) => {
     const updatedSkills = selectedSkills.includes(skill)
       ? selectedSkills.filter((s) => s !== skill)
@@ -98,7 +103,7 @@ const MentorSearchAndFilter = () => {
     setSelectedSkills(updatedSkills);
 
     if (updatedSkills.length === 0) {
-      console.log("paso")
+     
       // Si no hay habilidades seleccionadas, filtrar solo por la categoría
       dispatch({ type: "RESET_FILTER" }); // Reinicia el filtro de habilidades
       if (selectedCategories.length > 0) {
@@ -143,6 +148,7 @@ const MentorSearchAndFilter = () => {
     const percentage = ((newValue - min) / (max - min)) * 100;
 
     e.target.style.background = `linear-gradient(to right, #AA5BFF ${percentage}%, #BDBDBE ${percentage}%)`;
+    
   };
 
   return (
@@ -268,7 +274,6 @@ const MentorSearchAndFilter = () => {
             </div>
           )}
         </div>
-
         {/* Habilidades */}
         <div className="mb-4 bg-white">
           <div
@@ -316,9 +321,7 @@ const MentorSearchAndFilter = () => {
             </div>
           )}
         </div>
-
         {/* Precio */}
-
         <div className="">
           <div
             className={`flex items-center justify-between w-full p-2 font-semibold bg-gray-100 rounded-t-lg cursor-pointer`}
