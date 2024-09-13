@@ -6,6 +6,7 @@ import EducationCard from './components/EducationCard';
 import Pricing from './components/Pricing';
 import Estadistic from './components/Estadistic';
 import SimilarMentorCarrousel from './components/SimilarMentorCarrousel';
+import Reviews from './components/Reviews';
 
 export default function MentorInfoPage() {
   const [mentors, setMentors] = useState([]);
@@ -25,7 +26,8 @@ export default function MentorInfoPage() {
       });
   }, []);
 
-  const mentor = mentors[0];
+  const mentor = mentors[1];
+
 
 
   if (loading) return <p>Cargando...</p>;
@@ -54,14 +56,9 @@ export default function MentorInfoPage() {
   const place = experience?.place || 'Sin lugar';
 
   return (
-    <section className='mt-24 bg-[#FAFAFA]'>
-      <div>
-        <img
-          className='w-full '
-          src='./img/mentorinfohead.png'
-          alt=''
-        />
-        <div className='absolute top-60 w-full px-[120px]'>
+    <section className='my-24 bg-[#FAFAFA] relative'>
+      <div className=' z-20 pt-28 relative'>
+        <div className='w-full px-[120px] '>
           <header className='px-[120px] mb-5 flex justify-between'>
             <div className='w-full flex gap-4 items-center'>
               <figure className='w-[330px] h-[256px] p-2 bg-white rounded-lg'>
@@ -96,8 +93,8 @@ export default function MentorInfoPage() {
           </header>
 
           {/* Solapas */}
-          <article className='flex bg-white  shadow-2xl'>
-            <div className='w-9/12 p-4  mt-4 border'>
+          <article className='flex bg-white  shadow-xl'>
+            <div className='w-9/12 p-4  mt-4 '>
               <div className='flex'>
                 <button
                   onClick={() => setActiveTab('general')}
@@ -125,15 +122,19 @@ export default function MentorInfoPage() {
               {activeTab === 'general' && (
                 <div className='mt-6'>
                   <article>
-                    <p>{mentor.description}</p>
-                    <h3 className='font-bold mt-4'>Categorías</h3>
+                    <div className='flex flex-col gap-4'>
+                    <p className='text-gray-500 text-base mb-4'>{mentor.description}</p>
+                    <div>
+                    <h3 className='font-bold my-4'>Categorías</h3>
                     <ul className='flex gap-1'>
                       {mentor.category &&
                         mentor.category.map((category, index) => (
                           <li key={index}>{category}, </li>
                         ))}
                     </ul>
-                    <h3 className='font-bold mt-4'>Habilidades</h3>
+                    </div>
+                    <div>
+                    <h3 className='font-bold my-4'>Habilidades</h3>
                     <ul className='flex gap-1'>
                       {mentor.skills &&
                         mentor.skills.map((skill, index) => (
@@ -145,7 +146,9 @@ export default function MentorInfoPage() {
                           </li>
                         ))}
                     </ul>
-                    <div className='w-full '>
+                    </div>
+                    </div>
+                    <section className='w-full '>
                       <div className='flex justify-between items-center mt-8'>
                         <h2 className='font-bold  text-xl text-gray-600'>
                           Insignias
@@ -157,7 +160,7 @@ export default function MentorInfoPage() {
                       <p className='bg-gradient-secondary text-white p-2 w-full mt-4 rounded-lg text-xl font-semibold'>
                         Mentor Top en {mentor.category}
                       </p>
-                    </div>
+                    </section>
                     <section className='flex flex-col gap-8'>
                       <Badges />
                       <ExperienceCard mentor={mentor} />
@@ -170,7 +173,7 @@ export default function MentorInfoPage() {
               {/* Contenido de la solapa de reseñas se agregará más adelante */}
               {activeTab === 'reviews' && (
                 <div className='mt-6'>
-                  <p>Aquí se mostrarán las reseñas.</p>
+                  <Reviews mentor={mentor} />
                 </div>
               )}
             </div>
@@ -189,6 +192,11 @@ export default function MentorInfoPage() {
           </article>
         </div>
       </div>
+        <img
+          className='w-full absolute top-0 z-10  '
+          src='./img/mentorinfohead.png'
+          alt=''
+        />
     </section>
   );
 }
