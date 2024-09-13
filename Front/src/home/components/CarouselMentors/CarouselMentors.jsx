@@ -1,22 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../../../common/components/CardMentor";
-import Mentores from "../../../common/data/Mentores.json";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+
+// Función para obtener mentores al azar
+const getRandomMentors = (mentors, count = 9) => {
+  const shuffled = mentors.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+};
 
 const CarouselMentors = () => {
   const allTopMentors = useSelector((state) => state.mentorsTop);
-  
+
+  const [randomMentors, setRandomMentors] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(3);
-  const mentors = Mentores.slice(6, 15); // Asegúrate de que esto esté dentro del límite de 9.
+  const mentors = allTopMentors.slice(0, 9); // Asegúrate de que esto esté dentro del límite de 9.
 
-/*   // Función para actualizar el número de tarjetas a mostrar según el tamaño de la pantalla
+  // Obtener 9 mentores aleatorios cuando el componente se monta
+  useEffect(() => {
+    if (allTopMentors.length > 0) {
+      setRandomMentors(getRandomMentors(allTopMentors, 9));
+    }
+    console.log(randomMentors)
+  }, [allTopMentors]);
+
+  // Función para actualizar el número de tarjetas a mostrar según el tamaño de la pantalla
   useEffect(() => {
     const updateItemsPerPage = () => {
       if (window.innerWidth <= 780) {
-        setItemsPerPage(1); // Mostrar 1 tarjetas si la pantalla es más chica. 
+        setItemsPerPage(1); // Mostrar 1 tarjeta si la pantalla es más chica.
       } else {
-        setItemsPerPage(3); // Mostrar 3 tarjetas si es más pequeña
+        setItemsPerPage(3); // Mostrar 3 tarjetas si es más grande
       }
     };
     // Ejecuta la función al cargar el componente y cuando la ventana cambia de tamaño
@@ -25,20 +39,21 @@ const CarouselMentors = () => {
     // Limpia el listener al desmontar el componente
     return () => window.removeEventListener("resize", updateItemsPerPage);
   }, []);
- */
+
   // Avanzar una tarjeta
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex + 3;
-      return newIndex < mentors.length ? newIndex : 0; // Reinicia si llega al final
+      const newIndex = prevIndex + 1;
+      // Verifica si el nuevo índice sobrepasa el número de elementos disponibles
+      return newIndex < mentors.length ? newIndex : prevIndex;
     });
   };
 
   // Retroceder una tarjeta
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex - 3;
-      return newIndex > 0 ? newIndex : mentors.length - 0; // Va al último si llega al inicio
+      const newIndex = prevIndex - 1;
+      return newIndex >= 0 ? newIndex : prevIndex; // No retroceder más allá del inicio
     });
   };
 
@@ -59,18 +74,20 @@ const CarouselMentors = () => {
       </div>
 
       <div className="overflow-hidden xl:w-[1212px] md:w-[384px] bg-[#FAFAFA] flex flex-col">
-        <div className="  pb-3 flex flex-row-reverse bg-[#FAFAFA] rounded-full">
+        <div className="pb-3 flex flex-row-reverse bg-[#FAFAFA] rounded-full">
           <button
-            className="  p-2 rounded-full"
+            className={`p-2 rounded-full ${currentIndex >= randomMentors.length - itemsPerPage ? "opacity-50 cursor-not-allowed" : ""}`}
             onClick={nextSlide}
             aria-label="Siguiente mentor"
+            disabled={currentIndex >= randomMentors.length - itemsPerPage}
           >
             <img src="./icons/arrowR.svg" className="size-[42px]" />
           </button>
           <button
-            className=" p-2 rounded-full"
+            className={`p-2 rounded-full ${currentIndex <= 0 ? "opacity-50 cursor-not-allowed" : ""}`}
             onClick={prevSlide}
             aria-label="Mentor anterior"
+            disabled={currentIndex <= 0}
           >
             <img src="./icons/arrowL.svg" className="size-[42px]" />
           </button>
@@ -78,7 +95,7 @@ const CarouselMentors = () => {
 
         {/* Tarjetas del carrusel */}
         <div className="flex gap-[30px] justify-center">
-          {allTopMentors
+          {randomMentors
             .slice(currentIndex, currentIndex + itemsPerPage) // Mostrar tarjetas dentro del rango visible
             .map((mentor, index) => (
               <div key={index}>
@@ -90,19 +107,18 @@ const CarouselMentors = () => {
 
       {/* Indicadores de navegación */}
       <div className="flex justify-center mt-4 w-[250px] space-x-2">
-        {Array.from({ length: allTopMentors.length / 3 }).map((_, index) => (
+        {Array.from({ length: Math.ceil(randomMentors.length - 2) }).map((_, index) => (
           <button
             key={index}
-            className={`w-4 h-2 rounded-sm ${
-              index * 3 === currentIndex ? "bg-[#545454]" : "bg-[#D9D9D9]"
-            }`}
-            onClick={() => setCurrentIndex(index)}
-            aria-label={`Ir a la tarjeta ${index + 3}`}
+            className={`w-4 h-2 rounded-sm ${index === Math.floor(currentIndex) ? "bg-[#545454]" : "bg-[#D9D9D9]"}`}
+            onClick={() => setCurrentIndex(index * itemsPerPage)}
+            aria-label={`Ir a la tarjeta ${index + 1}`}
           />
         ))}
       </div>
     </div>
   );
+
 };
 
 export default CarouselMentors;
