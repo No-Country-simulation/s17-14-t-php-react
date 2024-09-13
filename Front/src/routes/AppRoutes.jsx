@@ -4,7 +4,7 @@ import Header from "../layout/header/Header";
 import MentorSearchAndFilter from "../search/Search";
 import MentorInfoPage from "../mentor/MentorInfoPage";
 import Footer from "../layout/footer/Footer";
-import MentorSearchAndFilter from "../search/Search"
+
 
 
 export default function AppRoutes() {
