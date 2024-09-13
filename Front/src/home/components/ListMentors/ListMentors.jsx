@@ -1,10 +1,11 @@
 import Card from "../../../common/components/CardMentor";
-import Mentores from "../../../common/data/Mentores.json";
+import { useSelector } from "react-redux";
 
 function ListMentors() {
-  const mentors = Mentores.slice(0, 6);
+  const allMentors = useSelector((state) => state.allMentors);
+  const mentors = allMentors.slice(0, 9);
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-[#FAFAFA]">
       <h1 className="text-base font-normal text-[#707172] mb-2">
         Mentorías para ti
       </h1>

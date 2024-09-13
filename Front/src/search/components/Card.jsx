@@ -13,10 +13,10 @@ const Card = ({ mentor }) => {
   const [comentNum, setComentNum] = useState(0);
 
   useEffect(() => {
-    const averageAndCommets = averageAndCommetsNum(mentor.rating);
+    const averageAndCommets = averageAndCommetsNum(mentor.reviews);
     setAverage(averageAndCommets.average); // Redondear a 1 decimal
     setComentNum(averageAndCommets.countComents);
-  }, [mentor.rating]);
+  }, [mentor.reviews]);
 
   useEffect(() => {
     const visibleSkills = visibleSkill(mentor.skills, 30);
@@ -24,26 +24,27 @@ const Card = ({ mentor }) => {
     setRemainingCount(visibleSkills.remaining);
   }, [mentor.skills]);
 
-  const lastPrice = mentor.precio.length - 1;
+  const lastPrice = mentor.pricing.length - 1;
   return (
     <div className="overflow-hidden drop-shadow-lg w-[792px] rounded-lg border-[1px] border-[#EAEAEA] bg-white h-[273px]">
       <div className="flex h-full p-5">
         <div className="relative">
           <img
-            src={mentor.imagen_de_perfil}
-            alt={mentor.nombre_completo}
+            src={mentor.avatar}
+            alt={mentor.first_name}
             className="w-[214px] h-[226px] rounded-md object-cover"
           />
-          {average > 4.5 && comentNum >= 3 && <TopBanner />}
+          {mentor.top && <TopBanner />}
         </div>
 
         <div className="w-[538px] pl-8">
           <div className="flex justify-between items-start">
             <div className="">
-              <h3 className="text-2xl font-semibold">{mentor.clase}</h3>
+              <h3 className="text-2xl font-semibold">{mentor.category[1] ? mentor.category[1] : "Ejemplo"}
+              </h3>
               <div className="flex flex-wrap py-1">
                 <p className="text-black font-normal">
-                  {mentor.nombre_completo}
+                  {mentor.first_name} {mentor.last_name}
                 </p>
                 <div className="flex items-center ml-2">
                   <span className="text-xs font-semibold h-4 text-black ml-1">
@@ -69,7 +70,7 @@ const Card = ({ mentor }) => {
           </div>
           <hr className="border-t-1 border-[#9D9D9E] mt-1" />
           <p className="mt-2 font-normal h-[69px] text-sm text-[#545557]">
-            {mentor.descripcion}
+            {mentor.description}
           </p>
 
           <div className="flex flex-wrap gap-2 mt-2 mb-1">
@@ -96,7 +97,7 @@ const Card = ({ mentor }) => {
             </button>
             <div className="flex justify-end  text-nowrap ">
               <p className="text-black text-xl font-semibold">
-                ${mentor.precio[0]} - ${mentor.precio[lastPrice]}
+                 ${mentor.pricing[0]} - ${mentor.pricing[lastPrice]} 
               </p>
             </div>
           </div>

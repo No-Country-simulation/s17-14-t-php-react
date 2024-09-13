@@ -13,28 +13,27 @@ const Card = ({ mentor }) => {
   const [comentNum, setComentNum] = useState(0);
 
   useEffect(() => {
-    const averageAndCommets=averageAndCommetsNum(mentor.rating)
-      setAverage(averageAndCommets.average); // Redondear a 1 decimal
-      setComentNum(averageAndCommets.countComents);
-    
-  }, [mentor.rating]);
+    const averageAndCommets = averageAndCommetsNum(mentor.reviews);
+    setAverage(averageAndCommets.average); // Redondear a 1 decimal
+    setComentNum(averageAndCommets.countComents);
+  }, [mentor.reviews]);
 
   useEffect(() => {
-    const visibleSkills =visibleSkill(mentor.skills,23)
+    const visibleSkills = visibleSkill(mentor.skills, 23);
     setVisibleSkills(visibleSkills.visible);
     setRemainingCount(visibleSkills.remaining);
   }, [mentor.skills]);
 
-  const lastPrice = mentor.precio.length - 1;
+  const lastPrice = mentor.pricing.length - 1;
 
   return (
     <div className="w-[384px] h-[353px]">
       <div className="relative overflow-hidden rounded-xl shadow-lg">
         {/* Mostrar TopBanner solo si average > 4.5 y comentNum >= 3 */}
-        {average > 4.5 && comentNum >= 3 && <TopBanner />}
-        
+        {mentor.top && <TopBanner />}
+
         <img
-          src={mentor.imagen_de_perfil}
+          src={mentor.avatar}
           alt="name"
           className="w-[384px] h-[353px] object-cover"
         />
@@ -48,11 +47,11 @@ const Card = ({ mentor }) => {
 
         <div className="absolute bottom-0 left-0 right-0 p-4 cursor-pointer">
           <h2 className="text-base font-semibold top-[275px] h-6 text-white left-[16px]">
-            {mentor.clase}
+            {mentor.category ? mentor.category[1] : "Ejemplo"}
           </h2>
           <div className="flex gap-2 left-4 top-[301px]">
             <p className="text-white/90 text-xs font-normal h-4">
-              {mentor.nombre_completo}
+              {mentor.first_name} {mentor.last_name}
             </p>
             <div className="ml-1 flex items-center gap-[2px]">
               <span className="text-xs font-normal h-4 text-white ml-1">
@@ -87,7 +86,7 @@ const Card = ({ mentor }) => {
           </div>
           <div className="absolute flex text-nowrap top-[57px] left-[253px] mr-[10px] gap-[10px]">
             <p className="text-white text-xl gap-[10px] font-semibold">
-              ${mentor.precio[0]} - ${mentor.precio[lastPrice]}
+            ${mentor.pricing[0]} - ${mentor.pricing[lastPrice]} 
             </p>
           </div>
         </div>

@@ -21,7 +21,13 @@ export default function AppRoutes() {
       <Route path="/search" element={<MentorSearchAndFilter />} />
       <Route path="/mentor" element={<MentorInfoPage />} />
     </Routes>
-    <Footer/>
+    {
+      location.pathname !== "/search" ? (
+        <Footer/>
+      ) : (
+        <></>
+      )}
+    
     </BrowserRouter>
   )
 }

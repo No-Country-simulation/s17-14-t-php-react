@@ -2,6 +2,15 @@ import { useEffect, useState } from "react";
 import Card from "./components/Card";
 import Mentores from "../common/data/Mentores.json";
 import styles from "./Search.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+
+import {
+  FilterByCategory,
+  FilterBySkills,
+  getAllMentor,
+  orderByName,
+} from "../redux/actions/actions";
 
 const categories = [
   {
@@ -32,34 +41,91 @@ const categories = [
 const suggestedSkills = ["Geometría", "Aritmética", "Ecuaciones"];
 
 const MentorSearchAndFilter = () => {
+  const allMentors = useSelector((state) => state.allMentors);
+  const allMentorsCopy = useSelector((state) => state.allMentorsCopy);
+
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState(["Matemáticas"]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 0]);
-
+  
+  const [orderIcon, setOrderIcon] = useState(true); 
   const [isCategoryOpen, setIsCategoryOpen] = useState(true); // Estado para desplegar categorías
   const [isSkillsOpen, setIsSkillsOpen] = useState(true); // Estado para desplegar habilidades
   const [isPriceOpen, setIsPriceOpen] = useState(true); // Estado para desplegar precio
   const [maxPrice, setMaxPrice] = useState(1000); // Estado para desplegar precio
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const category = queryParams.get("category"); // Categoria selecionada en home
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (category) {
+      setSelectedCategories([category]);
+      dispatch(FilterByCategory(category)); // Aplicar el filtro por categoría
+    } else {
+      dispatch({ type: "RESET_FILTER" }); // Reinicia el filtro
+    }
+  }, [category, dispatch]);
+
+  useEffect(() => {
+    if (!allMentors || allMentors.length === 0) {
+      setSelectedCategories([]);
+      dispatch(getAllMentor()); // Cargar los mentores si no están en el estado
+    }
+  }, [dispatch, allMentors]);
+
   const toggleCategory = (category) => {
-    setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((c) => c !== category)
-        : [...prev, category]
-    );
+    // Si la categoría ya está seleccionada, deseleccionarla
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories([]);
+      dispatch({ type: "RESET_FILTER" }); // Reinicia el filtro
+    } else {
+      // Si no está seleccionada, reemplaza la categoría anterior con la nueva
+      dispatch({ type: "RESET_FILTER" }); // Reinicia el filtro
+      setSelectedCategories([category]);
+      dispatch(FilterByCategory(category)); // Filtra por la nueva categoría seleccionada
+    }
   };
 
   const toggleSkill = (skill) => {
-    setSelectedSkills((prev) =>
-      prev.includes(skill) ? prev.filter((s) => s !== skill) : [...prev, skill]
-    );
+    const updatedSkills = selectedSkills.includes(skill)
+      ? selectedSkills.filter((s) => s !== skill)
+      : [...selectedSkills, skill];
+
+    setSelectedSkills(updatedSkills);
+
+    if (updatedSkills.length === 0) {
+      console.log("paso")
+      // Si no hay habilidades seleccionadas, filtrar solo por la categoría
+      dispatch({ type: "RESET_FILTER" }); // Reinicia el filtro de habilidades
+      if (selectedCategories.length > 0) {
+        dispatch(FilterByCategory(selectedCategories[0])); // Filtra por la categoría seleccionada si existe una
+      }
+    } else {
+      dispatch(FilterBySkills(updatedSkills)); // Filtra por todas las habilidades seleccionadas
+  
+
+    }
+  };
+
+  const orderMentor = ()=>{
+    if (orderIcon){
+      dispatch(orderByName("A"))
+      setOrderIcon(false)
+    }else{
+      dispatch(orderByName("D"))
+      setOrderIcon(true)
+    }
   };
 
   const clearFilters = () => {
     setSelectedCategories([]);
     setSelectedSkills([]);
     setPriceRange([0, 500]);
+    dispatch({ type: "RESET_FILTER" }); // Reinicia el estado con todos los mentores
   };
 
   useEffect(() => {
@@ -80,72 +146,87 @@ const MentorSearchAndFilter = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 flex mt-[80px] flex-col md:flex-row gap-8">
-      <div className="w-full md:w-3/4">
-        <form onSubmit={(e) => e.preventDefault()} className="mb-4">
-          <div className="relative flex items-center border-[1.5px] h-[52px] border-[#BDBDBE] rounded-md">
-            <img src="./icons/lupa.svg" className="ml-3" />
+    <div className="relative mx-auto p-4 flex mt-[80px] flex-col md:flex-row gap-8">
+      <div className="w-5/6 md:w-3/4">
+        <form onSubmit={(e) => e.preventDefault()} className="mb-4 ml-12">
+          <div className="relative flex items-center border-[1.5px] w-[87%] pl-4 h-[52px] border-[#BDBDBE] rounded-md">
+            <img src="./icons/lupa.svg" className="" />
             <input
               type="text"
               placeholder="Buscar mentores..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-3 pr-4 py-2 w-full outline-none"
+              className="pl-3 pr-4 py-2 w-5/6 outline-none"
             />
           </div>
         </form>
 
-        <div className="flex flex-wrap gap-2 mb-4">
-          {selectedCategories.map((category) => (
-            <span
-              key={category}
-              className="flex h-[25px] items-center pl-2 pr-1 text- text-[#545557] border-[#545557] border-[1px] text-sm font-semibold rounded-[4px] backdrop-blur-xl"
-            >
-              {category}
-              <button
-                onClick={() => toggleCategory(category)}
-                className="flex rounded-full w-[16px] h-[16px] bg-gradient-primary items-center justify-center ml-[7px] text-white"
+        <div className="flex justify-between items-start w-[87%] ml-12">
+          <div className="flex flex-wrap gap-2">
+            {selectedCategories.map((category) => (
+              <span
+                key={category}
+                className="flex h-[25px] items-center pl-2 pr-1 text-[#545557] border-[#545557] border-[1px] text-sm font-semibold rounded-[4px] backdrop-blur-xl"
               >
-                &times;
-              </button>
-            </span>
-          ))}
-          {selectedCategories.length > 0 && (
-            <button
-              onClick={clearFilters}
-              className="text-gray-500 hover:text-gray-700"
-            >
-              Limpiar Filtros
-            </button>
-          )}
+                {category}
+                <button
+                  onClick={() => toggleCategory(category)}
+                  className="flex rounded-full w-[16px] h-[16px] bg-gradient-primary items-center justify-center ml-[7px] text-white"
+                >
+                  &times;
+                </button>
+              </span>
+            ))}
+            {selectedSkills.map((skills) => (
+              <span
+                key={skills}
+                className="flex h-[25px] items-center pl-2 pr-1 text-[#545557] border-[#545557] border-[1px] text-sm font-semibold rounded-[4px] backdrop-blur-xl"
+              >
+                {skills}
+                <button
+                  onClick={() => toggleSkill(skills)}
+                  className="flex rounded-full w-[16px] h-[16px] bg-gradient-primary items-center justify-center ml-[7px] text-white"
+                >
+                  &times;
+                </button>
+              </span>
+            ))}
+          </div>
+
+          <button
+            onClick={clearFilters}
+            className="text-gray-500 hover:text-gray-700 mr-11"
+          >
+            Limpiar Filtros
+          </button>
         </div>
 
-        <div className="mb-4">
-          <h2 className="text-sm font-semibold mb-1 text-[#545557]">
-            7 Resultados
+        <div className="mb-4 w-[87%] ml-12">
+          <h2 className="text-sm font-semibold mb-1 mt-8 text-[#545557]">
+            {allMentorsCopy.length} Resultados
           </h2>
           <div className="flex justify-between ">
             <p className="text-black font-semibold text-lg ">
-              Resultados búsqueda "matemáticas"
+              Resultados búsqueda {selectedCategories}
             </p>
             {/* Colocar un limite de escritura en el buscador */}
 
-            <div className="flex flex-nowrap h-[21px]">
+            <div className="flex flex-nowrap mr-12 h-[21px] cursor-pointer " onClick={orderMentor} >
               <button className="text-sm text-[#545557] font-semibold">
                 Ordenar Por{" "}
               </button>
-              <img src="./icons/orderArrow.svg" className="ml-2  size-5" />
+              <img src="./icons/orderArrow.svg" className={`ml-2  size-5  ${orderIcon ? "rotate-180" : ""}`} />
             </div>
           </div>
         </div>
-        <div className="space-y-4">
-          {Mentores.map((mentor) => (
-            <Card key={mentor.id} mentor={mentor} />
+        <div className="space-y-4 ml-12">
+          {allMentorsCopy.map((mentor) => (
+            <Card key={mentor._id} mentor={mentor} />
           ))}
         </div>
       </div>
 
-      <div className="w-[506px]">
+      <div className=" fixed top-[100px] right-[10px] w-2/6">
         {/* Categorías */}
         <div className="mb-4">
           <div
@@ -161,7 +242,7 @@ const MentorSearchAndFilter = () => {
             />
           </div>
           {isCategoryOpen && (
-            <div className="p-2 border border-t-0 rounded-b-lg">
+            <div className="p-2 border border-t-0 rounded-b-lg select-none bg-white">
               {categories.map((category) => (
                 <div key={category.title} className="mb-4">
                   <h3 className="font-semibold text-violeta mb-2">
@@ -189,7 +270,7 @@ const MentorSearchAndFilter = () => {
         </div>
 
         {/* Habilidades */}
-        <div className="mb-4">
+        <div className="mb-4 bg-white">
           <div
             className="flex items-center justify-between w-full p-2 font-semibold bg-gray-100 rounded-t-lg cursor-pointer"
             onClick={() => setIsSkillsOpen(!isSkillsOpen)}
@@ -203,7 +284,7 @@ const MentorSearchAndFilter = () => {
             />
           </div>
           {isSkillsOpen && (
-            <div className="p-2 border border-t-0 rounded-b-lg">
+            <div className="p-2 border border-t-0 rounded-b-lg bg-white">
               <div className="relative flex items-center border-[1.5px] h-[48px] border-[#BDBDBE] rounded-md">
                 <img src="./icons/lupa.svg" className="ml-3" />
                 <input
@@ -254,16 +335,16 @@ const MentorSearchAndFilter = () => {
           {isPriceOpen && (
             <div>
               <div className="flex items-center justify-center">
-              <input
-                type="range"
-                id="price-range-slider"
-                min={priceRange[0]}
-                max={maxPrice}
-                value={priceRange[1]}
-                onChange={handleSliderChange}
-                className={` ${styles.input}  appearance-none mt-4 rounded-[8px]`}
-              />
-</div>
+                <input
+                  type="range"
+                  id="price-range-slider"
+                  min={priceRange[0]}
+                  max={maxPrice}
+                  value={priceRange[1]}
+                  onChange={handleSliderChange}
+                  className={` ${styles.input}  appearance-none mt-4 rounded-[8px]`}
+                />
+              </div>
               <div className="flex justify-between items-center mt-2">
                 <span className="text-sm text-gray-600">{priceRange[0]}</span>
                 <span className="text-sm text-gray-600">{priceRange[1]}</span>

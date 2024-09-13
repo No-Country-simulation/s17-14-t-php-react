@@ -6,32 +6,21 @@ import MenuPerfilModal from "./components/MenuPerfil";
 import { useAuth } from "../../common/hook/useAuth";
 
 const Header = () => {
+  //const [showModal, setShowModal] = useState(false);
   const [isMenuMentoriasOpen, setIsMenuMentoriasOpen] = useState(false);
   const [isMenuPerfilOpen, setIsMenuPerfilOpen] = useState(false);
-  const { user, loginWithGoogle } = useAuth();
-  const isLoggedIn = !!user?.decodedToken;
-console.log("user", user)
-  const handleLoginClick = async () => {
-    try {
-      // Llama al método de inicio de sesión con Google
-      await loginWithGoogle();
-    } catch (error) {
-      console.error('Error al iniciar sesión con Google:', error);
-    }
-  };
-
-
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
     <div className="min-[80px]">
       <nav className="fixed top-0 left-0 right-0 backdrop-blur-md bg-white/60 z-50">
         <div className="max-w-full mx-auto py-[10px] px-4 sm:px-6 lg:px-2">
-          <div className="flex items-center justify-between h-16 mx-12">
-            <div className="flex">
+          <div className="flex items-center justify-between h-16 mx-12 ">
+            <div className="flex ">
               <div className="flex-shrink-0">
                 <img
                   src="./icons/logo.svg"
-                  className="flex items-center py-2 select-none"
+                  className="flex  cursor-pointer select-none"
                   alt="mentos logo"
                 />
               </div>
@@ -77,7 +66,25 @@ console.log("user", user)
                 </div>
               )}
 
-              {isLoggedIn ? (
+              {isLogin ? (
+                <div className="flex gap-6">
+                  <button
+                    onClick={() => setIsLogin(!isLogin)}
+                    className="bg-white text-sm font-semibold  bg-gradient-primary bg-clip-text text-transparent  py-1 px-4 border-2 border-violeta hover:bg-violeta2 rounded-tr-lg rounded-bl-lg whitespace-nowrap cursor-pointer select-none"
+                  >
+                    Iniciar Sesión
+                  </button>
+                  {/* 
+                  onClick={() => setShowModal(true)}
+                  <GoogleLoginModal
+                    showModal={showModal}
+                    setShowModal={setShowModal}
+                  /> */}
+                  <button className="bg-white text-sm font-semibold  bg-gradient-primary text-blanco py-1.5 px-4 hover:bg-violeta2 rounded-tr-lg rounded-bl-lg cursor-pointer select-none">
+                    Registrarse
+                  </button>
+                </div>
+              ) : (
                 <div className="flex flex-nowrap gap-6 items-center">
                   <div className="flex items-center bg-transparent rounded-full">
                     <FaHeart className="text-black" />
