@@ -1,4 +1,15 @@
+import { useAuth } from "../../../common/hook/useAuth";
+
 const MenuPerfilModal = () => {
+  const { logout } = useAuth();
+  const handleLogoutClick = async () => {
+    try {
+      // Llama al método de inicio de sesión con Google
+      await logout();
+    } catch (error) {
+      console.error('Error al iniciar sesión con Google:', error);
+    }
+  };
   return (
     <>
       <div className="fixed">
@@ -16,9 +27,9 @@ const MenuPerfilModal = () => {
             <a href="#" className=" text-sm font-semibold text-black hover:text-violeta2">
               Dashboard
             </a>
-            <a href="#"  className=" text-sm font-semibold text-neutral-500 hover:text-violeta">
+            <button onClick={handleLogoutClick}   className=" text-sm font-semibold text-neutral-500 hover:text-violeta">
               Cerrar sesión
-            </a>
+            </button>
           </div>
         </div>
       </div>
