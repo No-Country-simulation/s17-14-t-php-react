@@ -1,17 +1,23 @@
 
-export default function averageAndCommetsNum(rating) {
+export default function averageAndCommetsNum(reviews) {
     // Calcular el promedio de puntajes
     let average = 0;
+    let countComents = 0;
 
-    if (rating && rating.length > 0) {
-        const totalPuntaje = rating.reduce(
-            (sum, review) => sum + parseFloat(review.puntaje),
+    if (reviews && reviews.length > 0) {
+        const validReviews = reviews.filter(review => review.overallRating);
+        const totalRating = reviews.reduce(
+            (sum, review) => sum + (review.overallRating || 0),
             0
         );
-        const countComents = rating.length;
-        const averagePuntaje = totalPuntaje / countComents;
+
+        countComents = validReviews.length;
+        const averagePuntaje = totalRating / countComents;
         average = averagePuntaje.toFixed(1)
 
         return ({average, countComents})
     }
+    
+    return ({ average, countComents})
+    
 }

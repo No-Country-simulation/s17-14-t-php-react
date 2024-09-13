@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 export default function MentorRecomendedCard({mentor}) {
   const {clase} = mentor;
-  console.log(clase)
   return (
     <article className='w-[588px] h-[258px] bg-gray-100 rounded-lg flex gap-4 justify-center items-center flex-col border-[2px] border-gray-200'>
       <header>

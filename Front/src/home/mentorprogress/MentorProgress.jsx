@@ -15,8 +15,8 @@ export default function MentorProgress() {
   const mentorRandom = Math.floor(Math.random() * mentors.length);
 
   return (
-    <div className=" my-12">
-      <header className="mb-6">
+    <div className=" my-12 bg-[#FAFAFA]">
+      <header className="mb-6 bg-[#FAFAFA]">
         <small className="text-base text-[#707172]">Progreso</small>
         <h1 className="text-lg font-bold">Mis mentores</h1>
       </header>
