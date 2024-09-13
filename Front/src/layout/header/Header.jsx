@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaSearch, FaHeart } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import { BiChevronDown } from "react-icons/bi";
 import MenuMentoriasModal from "./components/MenuMentorias";
 import MenuPerfilModal from "./components/MenuPerfil";
@@ -80,7 +80,7 @@ const Header = () => {
               {isLoggedIn ? (
                 <div className="flex flex-nowrap gap-6 items-center">
                   <div className="flex items-center bg-transparent rounded-full">
-                    <FaHeart className="text-black" />
+                    <img className="" src="./icons/heart.svg" alt="" />
                   </div>
                   <div
                     className="flex gap-4 cursor-pointer select-none"

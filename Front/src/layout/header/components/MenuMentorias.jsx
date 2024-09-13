@@ -1,4 +1,4 @@
-import styles from "./MenuMentorias.module.css";
+
 const MenuMentoriasModal = () => {
   return (
     <>

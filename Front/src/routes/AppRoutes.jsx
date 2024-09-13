@@ -5,6 +5,7 @@ import MentorSearchAndFilter from "../search/Search";
 import MentorInfoPage from "../mentor/MentorInfoPage";
 import Footer from "../layout/footer/Footer";
 
+
 export default function AppRoutes() {
   const location = useLocation();
 
