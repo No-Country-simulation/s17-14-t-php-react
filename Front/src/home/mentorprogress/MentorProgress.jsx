@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import MentorCard from "./components/MentorCard";
 import MentorRecomendedCard from "./components/MentorRecomendedCard";
 import Mentores from "../../common/data/Mentores.json";
-
+import {useNavigate} from "react-router-dom";
 export default function MentorProgress() {
   const mentors = Mentores;
   const [hasMentors, setHasMentors] = useState(false);
-
-  // Simulamos aleatoriamente si hay mentores o no
+  const navigate = useNavigate();  
   useEffect(() => {
     const randomMentorAvailability = Math.random() > 0.3; // 50% de probabilidad de que haya mentores
     setHasMentors(randomMentorAvailability);
@@ -36,7 +35,7 @@ export default function MentorProgress() {
           <p className="text-sm text-[#707172] font-semibold">
             Elige un mentor y empieza a transformar tu futuro
           </p>
-          <button className="bg-white text-sm font-semibold  bg-gradient-primary bg-clip-text text-transparent  py-2 px-4 border-2 border-violeta hover:bg-violeta2 rounded-tr-lg rounded-bl-lg whitespace-nowrap cursor-pointer select-none ">
+          <button onClick={() => { navigate('/search')}} className="bg-white text-sm font-semibold  bg-gradient-primary bg-clip-text text-transparent  py-2 px-4 border-2 border-violeta hover:bg-violeta2 rounded-tr-lg rounded-bl-lg whitespace-nowrap cursor-pointer select-none ">
             <span className=" text-md font-semibold">Buscar mentor</span>
           </button>
         </div>
