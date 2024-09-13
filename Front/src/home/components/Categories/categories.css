@@ -23,6 +23,9 @@
   .slider-container {
     position: relative;
     box-sizing: border-box;
+    height: 362px;
+    width: 100%;
+    overflow: hidden;
 
   }
   

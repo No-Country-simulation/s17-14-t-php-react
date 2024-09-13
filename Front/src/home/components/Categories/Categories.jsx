@@ -44,7 +44,7 @@ export default function Categories() {
     dots: false,
     infinite: true,
     speed: 1600,
-    slidesToShow: 7,
+    slidesToShow: 8,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -73,7 +73,7 @@ export default function Categories() {
   };
 
   return (
-    <div className=" relative slider-container bg-[#FAFAFA] z-20">
+    <div className=" relative slider-container w-full ">
       <header className="pl-[195px]">
         <small className="text-base">Explora</small>
         <h2 className="text-lg font-semibold mb-4">Categorías Populares</h2>
@@ -84,7 +84,7 @@ export default function Categories() {
           {categories.map((category, index) => (
             <div
               key={category.es}
-              className="category-item fit-cover h-[172px] outline-none "
+              className="category-item fit-cover h-[172px] outline-none cursor-pointer "
               ref={(el) => (imageRefs.current[index] = el)}
               onClick={() => handleCategoryClick(category)}
             >
@@ -104,8 +104,6 @@ export default function Categories() {
             </div>
           ))}
         </Slider>
-        <div className="gradient-left"></div>
-        <div className="gradient-right"></div>
       </div>
     </div>
   );

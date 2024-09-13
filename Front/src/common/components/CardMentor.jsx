@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import TopBanner from "./TopMentor";
 import averageAndCommetsNum from "../helper/averageAndCommetsNum";
 import visibleSkill from "../helper/visibleSkill";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ mentor }) => {
   const [visibleSkills, setVisibleSkills] = useState([]);
   const [remainingCount, setRemainingCount] = useState(0);
+  const navigate = useNavigate();
 
   // Calcular el promedio de puntajes
   const [average, setAverage] = useState(0);
@@ -27,7 +29,7 @@ const Card = ({ mentor }) => {
   const lastPrice = mentor.pricing.length - 1;
 
   return (
-    <div className="w-[384px] h-[353px]">
+    <div onClick={() => navigate(`/mentor/${mentor._id}`)} className="w-[384px] h-[353px] cursor-pointer">
       <div className="relative overflow-hidden rounded-xl shadow-lg">
         {/* Mostrar TopBanner solo si average > 4.5 y comentNum >= 3 */}
         {mentor.top && <TopBanner />}

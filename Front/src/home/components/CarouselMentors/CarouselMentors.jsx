@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Card from "../../../common/components/CardMentor";
 import Mentores from "../../../common/data/Mentores.json";
 import {  useSelector } from "react-redux";

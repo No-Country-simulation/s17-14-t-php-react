@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import averageAndCommetsNum from "../../common/helper/averageAndCommetsNum";
 import visibleSkill from "../../common/helper/visibleSkill";
 import TopBanner from "../../common/components/TopMentor";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ mentor }) => {
   const [visibleSkills, setVisibleSkills] = useState([]);
   const [remainingCount, setRemainingCount] = useState(0);
+  const navigate = useNavigate();
 
   // Calcular el promedio de puntajes
   const [average, setAverage] = useState(0);
@@ -26,7 +28,7 @@ const Card = ({ mentor }) => {
 
   const lastPrice = mentor.pricing.length - 1;
   return (
-    <div className="overflow-hidden drop-shadow-lg w-[792px] rounded-lg border-[1px] border-[#EAEAEA] bg-white h-[273px]">
+    <div onClick={() => navigate(`/mentor/${mentor._id}`)} className="overflow-hidden drop-shadow-lg w-[792px] rounded-lg border-[1px] border-[#EAEAEA] bg-white h-[273px] cursor-pointer">
       <div className="flex h-full p-5">
         <div className="relative">
           <img

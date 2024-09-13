@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "../home/Home";
 import Header from "../layout/header/Header";
 import MentorSearchAndFilter from "../search/Search";
@@ -15,7 +15,7 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/*" element={<Home />} />
         <Route path="/search" element={<MentorSearchAndFilter />} />
-        <Route path="/mentor" element={<MentorInfoPage />} />
+        <Route path="/mentor/:id" element={<MentorInfoPage />} />
       </Routes>
       {location.pathname !== "/search" ? <Footer /> : <></>}
     </>

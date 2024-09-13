@@ -26,7 +26,7 @@ export default function Home() {
       <section className="flex justify-center bg-[#FAFAFA]">
         <MentorProgress />
       </section>
-      <section className=" overflow-x-hidden bg-[#FAFAFA]">
+      <section className="  bg-[#FAFAFA]">
         <Categories />
       </section>
 
