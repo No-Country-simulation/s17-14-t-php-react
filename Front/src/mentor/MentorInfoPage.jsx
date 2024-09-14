@@ -11,6 +11,7 @@ import averageAndCommetsNum from '../common/helper/averageAndCommetsNum';
 
 
 
+
 export default function MentorInfoPage() {
   const { id } = useParams(); // Obteniendo la ID desde la URL
   const [mentor, setMentor] = useState(null); // Cambié el estado a un solo mentor
@@ -62,7 +63,7 @@ export default function MentorInfoPage() {
                     {mentor.first_name} {mentor.last_name}, {title} en {place}
                   </p>
                   <div className='flex items-center gap-1'>
-                    <img src='./icons/star.svg' className='' alt='star' />
+                    <img src='/icons/star.svg' className='' alt='star' />
                     <span className='text-sm font-semibold h-4 '>{normalizedAverageRating.average}</span>
                     <span className='text-sm font-normal h-4 text-neutral-300'>
                       ({normalizedAverageRating.countComents} reseñas)
@@ -70,7 +71,7 @@ export default function MentorInfoPage() {
                   </div>
                 </div>
                 <figure>
-                  <img src='./icons/heartCard.svg' alt='' />
+                  <img src='/icons/heartCard.svg' alt='' />
                 </figure>
               </div>
             </div>

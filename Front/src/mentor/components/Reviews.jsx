@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import { FaStar, FaRegStar } from 'react-icons/fa'; // Importar las estrellas y caritas de react-icons
+import { FaStar, FaRegStar } from 'react-icons/fa'; // Importar las estrellas de react-icons
 import { CiFaceSmile, CiFaceFrown, CiFaceMeh } from "react-icons/ci";
+import { AiOutlineExclamationCircle } from "react-icons/ai"; // Importar un ícono para el mensaje de sin reseñas
 
 // Componente para mostrar la barra de porcentaje
 function PercentageBar({ rating }) {
@@ -13,11 +14,23 @@ function PercentageBar({ rating }) {
 }
 
 // Componente principal
-export default function Reviews(mentor) {
-  const { reviews } = mentor.mentor;
+export default function Reviews({ mentor }) { // Desestructurando mentor aquí
+  const { reviews } = mentor;
 
   // Inicializar un objeto para almacenar los totales de cada categoría
   const categoryTotals = {};
+
+  // Verificar si hay reseñas
+  if (!reviews || reviews.length === 0) {
+    return (
+      <section className="p-4 flex items-center justify-center">
+        <div className="flex flex-col items-center">
+          <AiOutlineExclamationCircle className="text-4xl text-gray-500 mb-2" />
+          <p className="text-lg text-gray-500">Aún no ha recibido ninguna reseña.</p>
+        </div>
+      </section>
+    );
+  }
 
   // Recorrer todas las reviews y calcular el total y el conteo de cada categoría
   reviews.forEach((review) => {
@@ -87,13 +100,11 @@ function reviewsCard(reviews) {
             </p>
           </div>
 
-
-
           {/* Mensaje de la review */}
           <p className="text-md">{review.message}</p>
 
-                    {/* Mostrar categorías con caritas */}
-                    <div className="flex gap-2 mb-2">
+          {/* Mostrar categorías con caritas */}
+          <div className="flex gap-2 mb-2">
             {review.categories.slice(0, 4).map((category, index) => (
               <div key={index} className="flex gap-2 items-center border p-2 mt-5 rounded-lg border-[#AA5BFF] bg-[#AA5BFF] bg-opacity-50 ">
                 {renderFace(category.rating)}

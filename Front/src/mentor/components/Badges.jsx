@@ -1,7 +1,7 @@
 export default function Badges() {
     const infoCard = [
-      { title: 'Comunicador efectivo', description: 'El 81% de los usuarios están de acuerdo en que la comunicación es excelente.', img: './icons/star-shine.svg' },
-      { title: 'Presencia constante', description: 'Más del 40% de los usuarios destacan la resolución de dudas.', img: './icons/user-check.svg' },
+      { title: 'Comunicador efectivo', description: 'El 81% de los usuarios están de acuerdo en que la comunicación es excelente.', img: '/icons/star-shine.svg' },
+      { title: 'Presencia constante', description: 'Más del 40% de los usuarios destacan la resolución de dudas.', img: '/icons/user-check.svg' },
     ];
   
     return (

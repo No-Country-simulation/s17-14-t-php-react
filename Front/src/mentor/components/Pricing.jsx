@@ -56,15 +56,15 @@ export default function Pricing({ mentor }) {
             <div className='mt-4 flex flex-col gap-1'>
             <p className="text-md font-semibold">Mentoría 1:1</p>
             <div className='flex gap-1 items-center'>
-                <img src="./icons/call-dropped.svg" alt="" />
+                <img src="/icons/call-dropped.svg" alt="" />
                 <p className='text-xs'>45 minutos, 2 sesiones por semana</p>
             </div>
             <div className='flex gap-1 items-center'>
-                <img src="./icons/message-circle.svg" alt="" />
+                <img src="/icons/message-circle.svg" alt="" />
                 <p className='text-xs'>Acceso al chat 24/7</p>
             </div>
             <div className='flex gap-1 items-center'>
-                <img src="./icons/time-circle.svg" alt="" />
+                <img src="/icons/time-circle.svg" alt="" />
                 <p className='text-xs'>Respuestas en 24 horas o menos</p>
             </div>
             </div>
