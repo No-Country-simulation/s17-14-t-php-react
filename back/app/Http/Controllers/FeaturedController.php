@@ -18,11 +18,21 @@ class FeaturedController extends Controller
      */
     public function index()
     {
-        // Obtener todos los registros de la tabla 'featureds'
-        $featureds = Featured::all();
-
-        // Devolver los datos en formato JSON
-        return response()->json($featureds);
+        try {
+            $data = Featured::paginate(10);
+            $response = [
+                'lastPage' => $data->lastPage(),
+                'currentPage' => $data->currentPage(),
+                'total' => $data->total(),
+                'data' => $data->items()
+            ];
+            return response()->json($response, Response::HTTP_OK);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Error interno',
+                'error' => $e->getMessage()
+            ], Response::HTTP_BAD_REQUEST);
+        }
     }
 
     public function store(Request $request)

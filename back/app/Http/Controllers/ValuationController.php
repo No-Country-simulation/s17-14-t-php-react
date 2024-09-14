@@ -11,6 +11,29 @@ use Illuminate\Support\Facades\Log;
 
 class ValuationController extends Controller
 {
+    public function topRated()
+    {
+        try {
+            // Consulta para obtener las valoraciones con grade de 4 o 5, ordenadas por la columna 'grade' en orden descendente
+            $topRated = Valuation::whereIn('grade', [4, 5])
+                ->orderBy('grade', 'desc')
+                ->take(10)
+                ->get();
+
+            // Devolver una respuesta JSON exitosa
+            return response()->json([
+                'message' => 'Top valoraciones obtenidas exitosamente',
+                'data' => $topRated
+            ], Response::HTTP_OK);
+
+        } catch (\Exception $e) {
+            // Manejo de errores
+            return response()->json([
+                'message' => 'Error interno',
+                'error' => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
     public function index()
     {
         try {
@@ -34,6 +57,7 @@ class ValuationController extends Controller
         try {
             $user = Auth::user();
             $rules = [
+                'mentor_id' => 'required|exists:mentors,id',
                 'grade' => 'required|integer|between:1,5',
                 'review' => 'required|string',
 
@@ -53,6 +77,7 @@ class ValuationController extends Controller
                 ], Response::HTTP_BAD_REQUEST);
             }
             $chat = Valuation::create([
+                'mentor_id' => $request->input('mentor_id'),
                 'user_id' => Auth::id(),  // Usa el ID del usuario autenticado
                 'grade' => $request->grade,
                 'review' => $request->review,
@@ -88,6 +113,7 @@ class ValuationController extends Controller
 
             // Definir las reglas de validación
             $rules = [
+                'mentor_id' => 'required|exists:mentors,id',
                 'grade' => 'required|integer|between:1,5',
                 'review' => 'required|string',
             ];
@@ -120,6 +146,7 @@ class ValuationController extends Controller
 
             // Actualizar la valoración
             $valuation->update([
+                'mentor_id' => $request->input('mentor_id'),
                 'grade' => $request->input('grade'),
                 'review' => $request->input('review'),
             ]);

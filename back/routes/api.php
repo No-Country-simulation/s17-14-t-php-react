@@ -21,6 +21,8 @@ Route::get('/mentor/{id}', [MentorController::class, 'show']);
 //search
 Route::get('/search/{type}/{query}', [SearchControlador::class, 'index']);
 Route::get('/search', [SearchControlador::class, 'search']);
+//valuation
+Route::get('/valuation', [ValuationController::class, 'topRated']);
 //featured
 Route::get('/featured',[FeaturedController::class, 'index']);
 // rutas privadas
