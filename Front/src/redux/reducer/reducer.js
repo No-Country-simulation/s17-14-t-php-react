@@ -5,9 +5,7 @@ import {
   ADD_FAVORITE,
   REMOVE_FAVORITE,
   GET_ALL_MENTORS,
-  SELECT_PAGE,
-  SELECT_FILTER_PAGE,
-  SELECT_PRICE_PAGE,
+  GET_ALL_MENTORS_TOP,
   ORDER_BY_PRICE,
   ORDER_BY_NAME,
   GET_COMMENTS,
@@ -56,14 +54,16 @@ const reducer = (state = initialState, { type, payload }) => {
     //----------------------------MentorS-----------------------------------
     case GET_ALL_MENTORS: {
       let mentors = payload.filter(user => user.role === "mentor");
-      let tops = mentors.filter(user => user.top === true);
-      //console.log(mentors)
-      //console.log(tops)
-
       return {
         ...state,
         allMentors: mentors,
         allMentorsCopy: mentors,
+      };
+    }
+    case GET_ALL_MENTORS_TOP: {
+      let tops = payload.filter(user => user.top === true);
+      return {
+        ...state,
         mentorsTop: tops
       };
     }

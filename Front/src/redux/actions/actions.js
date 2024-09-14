@@ -5,9 +5,7 @@ import {
   VALIDATE_SESSION,
   LOG_OUT,
   GET_ALL_MENTORS,
-  SELECT_PAGE,
-  SELECT_FILTER_PAGE,
-  SELECT_PRICE_PAGE,
+  GET_ALL_MENTORS_TOP,
   ORDER_BY_PRICE,
   ORDER_BY_NAME,
   POST_COMMENT,
@@ -40,6 +38,20 @@ export function getAllMentor() {
       //console.log(response.data)
       return dispatch({
         type: GET_ALL_MENTORS,
+        payload: response.data,
+      });
+    } catch (error) {
+      throw Error(error.message);
+    }
+  };
+}
+export function getAllMentorTop() {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get("https://s17-14-t-php-react-production.up.railway.app/api/users");
+      //console.log(response.data)
+      return dispatch({
+        type: GET_ALL_MENTORS_TOP,
         payload: response.data,
       });
     } catch (error) {

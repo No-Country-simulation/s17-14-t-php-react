@@ -3,17 +3,13 @@
 //pricing(array), experience(array), education(array)
 
 export const GET_ALL_MENTORS = "GET_ALL_MENTORS";
+export const GET_ALL_MENTORS_TOP = "GET_ALL_MENTORS_TOP";
 
 //FILTER
 export const FILTER_BY_CATEGORY = "FILTER_BY_CATEGORY";
 export const FILTER_BY_NAME = "FILTER_BY_NAME"; // temporary is used by the searchBar
 export const FILTER_BY_SKILLS = "FILTER_BY_SKILLS";
 export const FILTER_BY_PRICE_RANGE = "FILTER_BY_PRICE_RANGE";
-
-//PAGINATION
-export const SELECT_PAGE = "SELECT_PAGE";
-export const SELECT_FILTER_PAGE = "SELECT_FILTER_PAGE";
-export const SELECT_PRICE_PAGE = "SELECT_PRICE_PAGE";
 
 //ORDER
 export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
@@ -26,7 +22,6 @@ export const UPDATE_COMMENT_BY_ID = "UPDATE_COMMENT_BY_ID";
 export const DELETE_COMMENT_BY_ID = "DELETE_COMMENT_BY_ID";
 
 //USERS
-// actions.js
 export const LOGIN_GOOGLE_REQUEST = 'LOGIN_GOOGLE_REQUEST';
 export const LOGIN_GOOGLE_SUCCESS = 'LOGIN_GOOGLE_SUCCESS';
 export const LOGIN_GOOGLE_FAILURE = 'LOGIN_GOOGLE_FAILURE';
