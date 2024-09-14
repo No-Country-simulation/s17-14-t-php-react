@@ -36,12 +36,12 @@ export default function MentorInfoPage() {
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>{error}</p>;
   if (!mentor) return <p>No se encontró ningún mentor.</p>;
- console.log(mentor)
+
   // Calcular promedio de las calificaciones y cantidad de reseñas
   const reviews = mentor.reviews || [];
 
   const normalizedAverageRating = averageAndCommetsNum(reviews); 
-  console.log(normalizedAverageRating)
+
 
   const experience = mentor.experience && mentor.experience[0];
   const title = experience?.title || 'Sin título';
@@ -166,7 +166,7 @@ export default function MentorInfoPage() {
               <h2 className='text-xl font-semibold'>Estadísticas de la comunidad</h2>
               <Estadistic />
               <h2 className='text-xl font-semibold'>Mentorías similares</h2>
-              <SimilarMentorCarrousel mentors={[mentor]} />
+              <SimilarMentorCarrousel mentor={mentor} />
             </aside>
           </article>
         </div>
