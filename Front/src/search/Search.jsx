@@ -72,7 +72,6 @@ const MentorSearchAndFilter = () => {
   }, [category, dispatch]);
   useEffect(() => {
     dispatch({ type: "RESET_FILTER" }); // Reinicia el filtro
-
     dispatch(FilterByPriceRange(priceRange))
   }, [priceRange, dispatch]);
 
@@ -103,7 +102,6 @@ const MentorSearchAndFilter = () => {
     setSelectedSkills(updatedSkills);
 
     if (updatedSkills.length === 0) {
-     
       // Si no hay habilidades seleccionadas, filtrar solo por la categoría
       dispatch({ type: "RESET_FILTER" }); // Reinicia el filtro de habilidades
       if (selectedCategories.length > 0) {
@@ -111,8 +109,6 @@ const MentorSearchAndFilter = () => {
       }
     } else {
       dispatch(FilterBySkills(updatedSkills)); // Filtra por todas las habilidades seleccionadas
-  
-
     }
   };
 
@@ -142,13 +138,11 @@ const MentorSearchAndFilter = () => {
   const handleSliderChange = (e) => {
     const newValue = parseInt(e.target.value);
     setPriceRange([priceRange[0], newValue]);
-
     const min = priceRange[0];
     const max = maxPrice;
     const percentage = ((newValue - min) / (max - min)) * 100;
 
     e.target.style.background = `linear-gradient(to right, #AA5BFF ${percentage}%, #BDBDBE ${percentage}%)`;
-    
   };
 
   return (

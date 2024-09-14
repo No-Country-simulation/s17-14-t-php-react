@@ -14,14 +14,12 @@ const CarouselMentors = () => {
   const [randomMentors, setRandomMentors] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(3);
-  const mentors = allTopMentors.slice(0, 9); // Asegúrate de que esto esté dentro del límite de 9.
 
   // Obtener 9 mentores aleatorios cuando el componente se monta
   useEffect(() => {
     if (allTopMentors.length > 0) {
       setRandomMentors(getRandomMentors(allTopMentors, 9));
     }
-    console.log(randomMentors)
   }, [allTopMentors]);
 
   // Función para actualizar el número de tarjetas a mostrar según el tamaño de la pantalla
@@ -45,7 +43,7 @@ const CarouselMentors = () => {
     setCurrentIndex((prevIndex) => {
       const newIndex = prevIndex + 1;
       // Verifica si el nuevo índice sobrepasa el número de elementos disponibles
-      return newIndex < mentors.length ? newIndex : prevIndex;
+      return newIndex < randomMentors.length ? newIndex : prevIndex;
     });
   };
 
@@ -107,18 +105,19 @@ const CarouselMentors = () => {
 
       {/* Indicadores de navegación */}
       <div className="flex justify-center mt-4 w-[250px] space-x-2">
-        {Array.from({ length: Math.ceil(randomMentors.length - 2) }).map((_, index) => (
-          <button
-            key={index}
-            className={`w-4 h-2 rounded-sm ${index === Math.floor(currentIndex) ? "bg-[#545454]" : "bg-[#D9D9D9]"}`}
-            onClick={() => setCurrentIndex(index * itemsPerPage)}
-            aria-label={`Ir a la tarjeta ${index + 1}`}
-          />
-        ))}
+        {Array.from({ length: Math.ceil(randomMentors.length - 2) }).map(
+          (_, index) => (
+            <button
+              key={index}
+              className={`w-4 h-2 rounded-sm ${index === Math.floor(currentIndex) ? "bg-[#545454]" : "bg-[#D9D9D9]"}`}
+              onClick={() => setCurrentIndex(index * itemsPerPage)}
+              aria-label={`Ir a la tarjeta ${index + 1}`}
+            />
+          )
+        )}
       </div>
     </div>
   );
-
 };
 
 export default CarouselMentors;
