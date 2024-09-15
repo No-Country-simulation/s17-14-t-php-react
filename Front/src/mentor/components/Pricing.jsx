@@ -7,8 +7,10 @@ export default function Pricing({ mentor }) {
 
   // Ordenar los precios de menor a mayor
   const sortedPricing = pricing.sort((a, b) => a.price - b.price);
+  console.log(pricing)
 
   const basic = sortedPricing[0].toFixed(2);
+
   const premium = sortedPricing[1].toFixed(2);
   const pack = sortedPricing[2].toFixed(2);
 
