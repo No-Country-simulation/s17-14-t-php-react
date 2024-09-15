@@ -1,7 +1,12 @@
+import Sidebar from "../layout/sidebar/Sidebar";
 
 
 export default function Dashboard() {
   return (
-   <div>hola</div>
-  );
+    <div className="h-screen"> 
+    <Sidebar />
+    </div>
+
+
+  )
 }

@@ -1,0 +1,46 @@
+public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+    public function handleGoogleCallback()
+    {
+        try {
+            $googleUser = Socialite::driver('google')->user();
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Error al obtener datos de Google: ' . $e->getMessage()
+            ], 500);
+        }
+
+        // Encuentra o crea un usuario en la base de datos
+        $user = $this->findOrCreateUser($googleUser);
+
+        // Autentica al usuario
+        Auth::login($user, true);
+
+        // Crea un token de acceso usando Passport
+        $tokenResult = $user->createToken('Personal Access Token');
+        $token = $tokenResult->token;
+        $token->save();
+
+        return response()->json([
+            'access_token' => $tokenResult->accessToken,
+            'data' => $user,
+        ]);
+    }
+    private function findOrCreateUser($googleUser)
+    {
+        $user = GoogleUser::where('google_id', $googleUser->id)->first();
+
+        if ($user) {
+            return $user;
+        }
+
+        // Crea un nuevo usuario si no existe
+        return GoogleUser::create([
+            'name' => $googleUser->name,
+            'email' => $googleUser->email,
+            'google_id' => $googleUser->id,
+            'password' => bcrypt('password'), // Necesario solo para autenticación interna
+        ]);
+    }

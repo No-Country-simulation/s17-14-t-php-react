@@ -58,7 +58,9 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
         if($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], Response::HTTP_BAD_REQUEST);
+            return response()->json([
+                'errors' => $validator->errors()
+            ], Response::HTTP_BAD_REQUEST);
         }
         $user = new User();
         $user->name = $request->name;
@@ -66,6 +68,8 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $user->role = 'client';
         $user->save();
-        return response()->json(['message' => "Hola, $user->name tu registro fue completado"], 201);
+        return response()->json([
+            'message' => "Hola, $user->name tu registro fue completado"
+        ], 201);
     }
 }

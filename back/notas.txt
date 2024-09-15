@@ -1,0 +1,57 @@
+Entidades y Campos
+Mentorias
+
+tablas de buscar(con filtros?)
+	id
+	mentor
+	filtros por valoración
+	filtro de skills
+
+
+tabla de chat
+	id
+	usuario
+	mentor
+	mensajes
+
+tabla de valoración
+	id
+	usuario
+	mentor
+	calificación
+	reseña
+
+tabla contratación
+	id
+	nombre
+	skill
+
+tabla de pagos
+	id
+	usuario
+	mentor
+	pago bool
+
+tabla user
+	id
+	nombre
+	email
+
+(esto no estaba en el mvp pero se habló de ello lo de guardar mentores si se llega se hace sino no)
+tabla destacados
+	id
+	mentor
+	usuario
+
+tabla de skills.
+	id
+	nombre skill
+
+
+tabla mentor
+	id
+	skills
+	nombre
+	apellido
+
+
