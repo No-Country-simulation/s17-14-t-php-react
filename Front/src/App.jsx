@@ -7,13 +7,13 @@ import AppRoutes from "./routes/AppRoutes";
 function App() {
   return (
     <div>
-      <AuthProvider>
         
     <BrowserRouter>
+      <AuthProvider>
       <AppRoutes />
+      </AuthProvider>
     </BrowserRouter>
 
-      </AuthProvider>
     </div>
     
   );
