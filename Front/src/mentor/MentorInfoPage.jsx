@@ -171,7 +171,7 @@ export default function MentorInfoPage() {
           </article>
         </div>
       </div>
-      <img className='w-full absolute top-0 z-10' src='./img/mentorinfohead.png' alt='' />
+      <img className='w-full absolute top-0 z-10' src='/img/mentorinfohead.png' alt='' />
     </section>
   );
 }
