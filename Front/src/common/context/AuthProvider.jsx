@@ -12,9 +12,11 @@ export default function AuthProvider({ children }) {
     const token = localStorage.getItem('authToken'); // Lee el token desde localStorage
     if (token) {
       const decodedToken = jwtDecode(token);
+      localStorage.setItem('user', JSON.stringify(decodedToken));
       setUser({ decodedToken });
     }
   }, []);
+  console.log(user)
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
@@ -41,6 +43,8 @@ export default function AuthProvider({ children }) {
     try {
       // Elimina el token del localStorage primero
       localStorage.removeItem('authToken');
+      localStorage.removeItem('user');
+      localStorage.removeItem('mentors');
       
       // Luego, actualiza el estado del usuario
       setUser(null);

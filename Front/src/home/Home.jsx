@@ -12,25 +12,28 @@ export default function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllMentor(), getAllMentorTop());
+    dispatch(getAllMentor());
+    dispatch(getAllMentorTop());
   }, [dispatch]);
+
+  // Verificar si hay un usuario en localStorage
+  const hasUser = localStorage.getItem('user') !== null;
 
   return (
     <section className="">
       <section className="">
         <Hero />
       </section>
-      <section className="flex justify-center bg-[#FAFAFA]">
-        <MentorProgress />
-      </section>
-      <section className="  bg-[#FAFAFA]">
+      {hasUser && (
+        <section className="flex justify-center bg-[#FAFAFA]">
+          <MentorProgress />
+        </section>
+      )}
+      <section className="bg-[#FAFAFA]">
         <Categories />
       </section>
-
       <CarouselMentors />
-
       <ListMentors />
-
       <FAQItemContainer />
     </section>
   );
