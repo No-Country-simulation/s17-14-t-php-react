@@ -15,13 +15,7 @@ export default function Pricing({ mentor }) {
   const [activeTab, setActiveTab] = useState('basic'); // Por defecto mostrar el básico
 
   // Ordenar los precios de menor a mayor
-  const sortedPricing = pricing.sort((a, b) => a.price - b.price);
-  console.log(pricing)
-
-  const basic = sortedPricing[0].toFixed(2);
-
-  const premium = sortedPricing[1].toFixed(2);
-  const pack = sortedPricing[2].toFixed(2);
+ 
 
   return (
     <div className="p-6 bg-white shadow-lg rounded-lg border">
