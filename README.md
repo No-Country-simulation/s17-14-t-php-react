@@ -1,9 +1,10 @@
 <h1 align="center">
-  <img src="" width="35"> Mentos <img src="" width="35">
+   Mentos 
+
 </h1>
 
 ## Descripción
-Pagina de mentorias(ampliar descripcion)
+Nuestra plataforma te conecta con mentores expertos en diversas áreas profesionales y personales. Ya sea que busques mejorar tus habilidades, recibir orientación para tu carrera, o aprender algo nuevo, aquí encontrarás mentores calificados dispuestos a ayudarte. Explora perfiles, revisa calificaciones, y filtra por categorías, habilidades y precios para encontrar al mentor perfecto para ti. Juntos, alcanzarás tus metas con el apoyo de alguien que ha recorrido el camino antes.
 
 ## Tecnologías
 ### Frontend:
