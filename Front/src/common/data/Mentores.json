@@ -401,5 +401,75 @@
             240
         ],
         "descripcion": "Diseñador gráfico con más de 15 años de experiencia, especializado en diseño digital utilizando herramientas como Photoshop, Illustrator y en diseño web."
+    },
+    {
+        "id": 14,
+        "nombre_completo": "Pepe",
+        "imagen_de_perfil": "https://fotografias.lasexta.com/clipping/cmsimages02/2019/11/14/66C024AF-E20B-49A5-8BC3-A21DD22B96E6/default.jpg?crop=1299,731,x0,y0&width=1900&height=1069&optimize=low",
+        "clase": "Diseño Gráfico",
+        "skills": [
+            "Photoshop",
+            "Illustrator",
+            "Diseño Web"
+        ],
+        "rating": [
+            {
+                "puntaje": "4.7",
+                "comentario": "Miguel es muy creativo y sus clases de diseño son extremadamente prácticas."
+            },
+            {
+                "puntaje": "4.7",
+                "comentario": "Miguel es muy creativo y sus clases de diseño son extremadamente prácticas."
+            },
+            {
+                "puntaje": "4.7",
+                "comentario": "Miguel es muy creativo y sus clases de diseño son extremadamente prácticas."
+            },
+            {
+                "puntaje": "4.7",
+                "comentario": "Miguel es muy creativo y sus clases de diseño son extremadamente prácticas."
+            }
+        ],
+        "precio": [
+            130,
+            180,
+            240
+        ],
+        "descripcion": "Diseñador gráfico con más de 15 años de experiencia, especializado en diseño digital utilizando herramientas como Photoshop, Illustrator y en diseño web."
+    },
+    {
+        "id": 15,
+        "nombre_completo": "CARLOS",
+        "imagen_de_perfil": "https://fotografias.lasexta.com/clipping/cmsimages02/2019/11/14/66C024AF-E20B-49A5-8BC3-A21DD22B96E6/default.jpg?crop=1299,731,x0,y0&width=1900&height=1069&optimize=low",
+        "clase": "Diseño Gráfico",
+        "skills": [
+            "Photoshop",
+            "Illustrator",
+            "Diseño Web"
+        ],
+        "rating": [
+            {
+                "puntaje": "4.7",
+                "comentario": "Miguel es muy creativo y sus clases de diseño son extremadamente prácticas."
+            },
+            {
+                "puntaje": "4.7",
+                "comentario": "Miguel es muy creativo y sus clases de diseño son extremadamente prácticas."
+            },
+            {
+                "puntaje": "4.7",
+                "comentario": "Miguel es muy creativo y sus clases de diseño son extremadamente prácticas."
+            },
+            {
+                "puntaje": "4.7",
+                "comentario": "Miguel es muy creativo y sus clases de diseño son extremadamente prácticas."
+            }
+        ],
+        "precio": [
+            130,
+            180,
+            240
+        ],
+        "descripcion": "Diseñador gráfico con más de 15 años de experiencia, especializado en diseño digital utilizando herramientas como Photoshop, Illustrator y en diseño web."
     }
 ]

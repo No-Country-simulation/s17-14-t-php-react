@@ -23,6 +23,9 @@
   .slider-container {
     position: relative;
     box-sizing: border-box;
+    height: 362px;
+    width: 100%;
+    overflow: hidden;
 
   }
   
@@ -34,11 +37,11 @@
     margin: 0 12px;
 
   } 
-  .gradient-left, .gradient-right {
+/*   .gradient-left, .gradient-right {
     position: absolute;
     top: 0;
     bottom: 0;
     width: 30px; 
     z-index: 1;
     pointer-events: none; 
-  }
+  } */

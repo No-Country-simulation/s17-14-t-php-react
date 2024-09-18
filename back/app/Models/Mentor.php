@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+
+=======
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-
 
 class Mentor extends Model
 {
@@ -23,9 +24,5 @@ class Mentor extends Model
         'skill_id',
         'valuation_id'
     ];
-
-    public function chats() {
-        return $this->hasMany(Chat::class);
-    }
 
 }

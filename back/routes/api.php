@@ -18,9 +18,9 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::get('mentor', [MentorController::class, 'index']);
 Route::get('mentor/{id}', [MentorController::class, 'show']);
 
+
 //valuation
 Route::post('valuation', [ValuationController::class, 'store']);
-
 
 // rutas privadas
 Route::middleware('auth:api')->group(function () {
