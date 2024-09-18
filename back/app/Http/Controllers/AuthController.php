@@ -55,7 +55,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:6|',
         ]);
         if($validator->fails()) {
             return response()->json([
@@ -66,7 +66,7 @@ class AuthController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-        $user->role = 'client';
+        $user->role = 'mentee';
         $user->save();
         return response()->json([
             'message' => "Hola, $user->name tu registro fue completado"
