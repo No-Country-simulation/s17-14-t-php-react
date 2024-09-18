@@ -1,6 +1,6 @@
 import axios from "axios";
+import { getBaseUrl } from "../../helper/envHelper";
 
-// axios.defaults.baseURL = "http://localhost:3000";
-axios.defaults.baseURL = "https://s17-14-t-php-react-production.up.railway.app/";
+axios.defaults.baseURL = getBaseUrl();
 
 export default axios;

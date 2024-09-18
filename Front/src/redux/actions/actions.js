@@ -5,6 +5,7 @@ import {
   VALIDATE_SESSION,
   LOG_OUT,
   GET_ALL_MENTORS,
+  GET_MENTORS,
   GET_ALL_MENTORS_TOP,
   ORDER_BY_PRICE,
   ORDER_BY_NAME,
@@ -29,15 +30,29 @@ import {
   LOGIN_GOOGLE_SUCCESS,
   LOGIN_GOOGLE_FAILURE
 } from "./types";
+import { getBaseUrl } from "../../common/helper/envHelper";
 
+axios.defaults.baseURL = getBaseUrl();
 //----------------------MENTOR-------------------
 export function getAllMentor() {
   return async function (dispatch) {
     try {
-      const response = await axios.get("https://s17-14-t-php-react-production.up.railway.app/api/users");
-      //console.log(response.data)
+      const response = await axios.get("/api/users");
       return dispatch({
         type: GET_ALL_MENTORS,
+        payload: response.data,
+      });
+    } catch (error) {
+      throw Error(error.message);
+    }
+  };
+}
+export function getMentors() {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get("/api/users");
+      return dispatch({
+        type: GET_MENTORS,
         payload: response.data,
       });
     } catch (error) {
@@ -48,8 +63,8 @@ export function getAllMentor() {
 export function getAllMentorTop() {
   return async function (dispatch) {
     try {
-      const response = await axios.get("https://s17-14-t-php-react-production.up.railway.app/api/users");
-      //console.log(response.data)
+      const response = await axios.get("/api/users");
+
       return dispatch({
         type: GET_ALL_MENTORS_TOP,
         payload: response.data,
@@ -59,7 +74,6 @@ export function getAllMentorTop() {
     }
   };
 }
-
 //--------------user----------
 
 export function addFavorite(userId, userFav, mentorId) {
@@ -68,7 +82,7 @@ export function addFavorite(userId, userFav, mentorId) {
   };
   return async function (dispatch) {
     try {
-      const response = await axios.put(`/api/users/${userId}`, data);
+      const response = await axios.put(`api/users/${userId}`, data);
       return dispatch({
         type: ADD_FAVORITE,
         payload: response.data.detail,
@@ -85,7 +99,7 @@ export function removeFavorite(userId, userFav, mentorId) {
   };
   return async function (dispatch) {
     try {
-      const response = await axios.put(`/api/users/${userId}`, data);
+      const response = await axios.put(`api/users/${userId}`, data);
       return dispatch({
         type: REMOVE_FAVORITE,
         payload: response.data.detail,
@@ -97,14 +111,14 @@ export function removeFavorite(userId, userFav, mentorId) {
 }
 
 //---------------------GOOGLE---------------------------------
-const BASE_URL = 'https://s17-14-t-php-react-production.up.railway.app';
+
 // Iniciar el login redirigiendo al usuario a Google 
 export function loginGoogleUser() {
   return async function (dispatch) {
     try {
       dispatch({ type: LOGIN_GOOGLE_REQUEST });
       // Redirige a la página de autenticación de Google
-      const url = `${BASE_URL}/api/sessions/google`;
+      const url = `/api/sessions/google`;
       window.location.assign(url);
 
     } catch (error) {
@@ -122,7 +136,7 @@ export function loginGoogleUserCallback() {
       dispatch({ type: LOGIN_GOOGLE_REQUEST });
 
       // Hacer la petición al backend para obtener los datos del usuario
-      const response = await axios.get(`${BASE_URL}/api/sessions/google/callback`);
+      const response = await axios.get(`/api/sessions/google/callback`);
 
       return dispatch({
         type: LOGIN_GOOGLE_SUCCESS,
@@ -135,7 +149,7 @@ export function loginGoogleUserCallback() {
       });
     }
   };
-}
+} 
 // --------------Filter ----------------
 export function FilterByCategory(category) {
   return {
@@ -166,8 +180,7 @@ export function FilterByPriceRange(PriceRange) {
 export function getmentorsById(id) {
   return async function (dispatch) {
     try {
-      //console.log(title);
-      const response = await axios.post(`/api/users/${id}`);
+      const response = await axios.post(`api/users/${id}`);
       return dispatch({
         type: GET_MENTOR_BY_ID,
         payload: response.data,
@@ -197,7 +210,7 @@ export function orderByName(order) {
 export function getComents() {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`/getComments`);
+      const response = await axios.get(`getComments`);
       return dispatch({
         type: GET_COMMENTS,
         payload: response.data,
@@ -211,8 +224,7 @@ export function getComents() {
 export function postComment(comment) {
   return async function (dispatch) {
     try {
-      //console.log(comment);
-      const response = await axios.post(`/postComment`, comment);
+      const response = await axios.post(`postComment`, comment);
       return dispatch({
         type: POST_COMMENT,
         payload: response.data,
@@ -226,8 +238,7 @@ export function postComment(comment) {
 export function updateCommentById({ id, rating, comment }) {
   return async function (dispatch) {
     try {
-      console.log(id, rating, comment, "desde actions");
-      const response = await axios.put(`/updateComment/${id}`, {
+      const response = await axios.put(`updateComment/${id}`, {
         rating,
         comment,
       });
@@ -243,8 +254,7 @@ export function updateCommentById({ id, rating, comment }) {
 export function deleteCommentById(id) {
   return async function (dispatch) {
     try {
-      //console.log(id);
-      const response = await axios.delete(`/deleteComment/${id}`);
+      const response = await axios.delete(`deleteComment/${id}`);
       return dispatch({
         type: DELETE_COMMENT_BY_ID,
         payload: response.data,
@@ -262,7 +272,7 @@ export function obtainToken({ email }) {
         id: "6",
         data1: email,
       };
-      const response = await axios.post("/activateUser/", theData);
+      const response = await axios.post("activateUser/", theData);
       dispatch({ type: GET_TOKEN, payload: response.data });
       return response.data.text;
     } catch (error) {
@@ -295,10 +305,6 @@ export function logOut() {
   };
 }
 
-
-
-
-
 export function loginProfile(bool) {
   return {
     type: LOGIN_PROFILE,
@@ -315,8 +321,7 @@ export function listWish(bool) {
 export function getUsers() {
   return async function (dispatch) {
     try {
-      const response = await axios.post(`/findUser`);
-      // console.log("data.detail-->",response.data.detail);
+      const response = await axios.post(`findUser`);
       return dispatch({
         type: GET_USERS,
         payload: response.data,
@@ -329,7 +334,7 @@ export function getUsers() {
 export function getUserById(id) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(`/findUser/${id}`);
+      const response = await axios.get(`api/users/${id}`);
       return dispatch({
         type: GET_USER_BY_ID,
         payload: response.data,
@@ -342,7 +347,7 @@ export function getUserById(id) {
 export function postUser(userData) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(`/newUser`, userData);
+      const response = await axios.post(`newUser`, userData);
       return dispatch({
         type: POST_USER,
         payload: response.data,

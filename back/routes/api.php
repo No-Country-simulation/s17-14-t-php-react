@@ -2,15 +2,18 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\MentorController;
+use AWS\CRT\HTTP\Request;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
+use SebastianBergmann\CodeCoverage\Driver\Driver;
 
 //users
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
-//users_google
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
-Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+//mentor
+Route::get('mentor', [MentorController::class, 'index']);
+Route::get('mentor/{id}', [MentorController::class, 'show']);
 
 // rutas privadas
 Route::middleware('auth:api')->group(function () {

@@ -5,6 +5,7 @@ import {
   ADD_FAVORITE,
   REMOVE_FAVORITE,
   GET_ALL_MENTORS,
+  GET_MENTORS,
   GET_ALL_MENTORS_TOP,
   ORDER_BY_PRICE,
   ORDER_BY_NAME,
@@ -30,6 +31,7 @@ let initialState = {
   access: { state: false, ref: "" },
   allMentors: [],
   allMentorsCopy: [],
+  allMentorsCopy2: [],
   allMentorsPrice: [],
   categories: [],
   skills: [],
@@ -54,10 +56,31 @@ const reducer = (state = initialState, { type, payload }) => {
     //----------------------------MentorS-----------------------------------
     case GET_ALL_MENTORS: {
       let mentors = payload.filter(user => user.role === "mentor");
+      // Extraer categorías únicas del primer elemento de mentor.category
+      let categories = [...new Set(
+        mentors
+          .map(mentor => mentor.category[0]) // Obtener el primer elemento de cada categoría
+          .filter(Boolean) // Filtrar los valores vacíos o undefined
+      )];
+      let skills = [...new Set(
+        mentors
+          .flatMap(mentor => mentor.skills) // Aplana los arrays de skills de cada mentor
+          .filter(Boolean) // Filtrar valores vacíos o undefined
+      )];
+      
       return {
         ...state,
         allMentors: mentors,
         allMentorsCopy: mentors,
+        categories: categories,
+        skills: skills
+      };
+    }
+    case GET_MENTORS: {
+      let mentors = payload.filter(user => user.role === "mentor");
+      return {
+        ...state,
+        allMentorsCopy2: mentors
       };
     }
     case GET_ALL_MENTORS_TOP: {
@@ -100,20 +123,25 @@ const reducer = (state = initialState, { type, payload }) => {
       };
     case FILTER_BY_CATEGORY: {
       let mentorsFilter = state.allMentorsCopy.filter(mentor =>
-        mentor.category[0] === payload
+          mentor.category.includes(payload)
       )
       return {
         ...state,
         allMentorsCopy: mentorsFilter
       };
     }
-    case FILTER_BY_SKILLS:
+    case FILTER_BY_SKILLS: {
+      const searchTerm = payload.toLowerCase();
+      let mentorsFilter = state.allMentors.filter(mentor =>
+        mentor.skills.some(skill =>
+          skill.toLowerCase().includes(searchTerm) // verificar si el skill contiene el término de búsqueda
+        )
+      );
       return {
         ...state,
-        allMentorsCopy: state.allMentors.filter(mentor =>
-          payload.every(skill => mentor.skills.includes(skill))
-        ),
+        allMentorsCopy: mentorsFilter
       };
+    }
 
     case FILTER_BY_NAME:
       if (payload === "ALL")
@@ -243,7 +271,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case GET_USER_BY_ID:
       return {
         ...state,
-        userDetail: payload.detail,
+        userDetail: payload,
       };
     case LOGIN_PROFILE:
       return {
